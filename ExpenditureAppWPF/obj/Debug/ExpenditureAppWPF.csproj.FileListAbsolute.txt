@@ -12,3 +12,6 @@ C:\Users\Benedict\SkyDrive\Documents\Visual Studio 2015\Projects\ExpenditureAppW
 C:\Users\Benedict\SkyDrive\Documents\Visual Studio 2015\Projects\ExpenditureAppWPF\ExpenditureAppWPF\obj\Debug\ExpenditureAppWPF.csproj.GenerateResource.Cache
 C:\Users\Benedict\SkyDrive\Documents\Visual Studio 2015\Projects\ExpenditureAppWPF\ExpenditureAppWPF\obj\Debug\ExpenditureAppWPF.exe
 C:\Users\Benedict\SkyDrive\Documents\Visual Studio 2015\Projects\ExpenditureAppWPF\ExpenditureAppWPF\obj\Debug\ExpenditureAppWPF.pdb
+C:\Users\Benedict\Software Projects\ExpenditureAppWPFRepo\ExpenditureAppWPF\bin\Debug\ExpenditureAppWPF.exe.config
+C:\Users\Benedict\Software Projects\ExpenditureAppWPFRepo\ExpenditureAppWPF\obj\Debug\ExpenditureAppWPF.exe
+C:\Users\Benedict\Software Projects\ExpenditureAppWPFRepo\ExpenditureAppWPF\obj\Debug\ExpenditureAppWPF.pdb
