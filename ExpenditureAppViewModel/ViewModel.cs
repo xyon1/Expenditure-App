@@ -17,9 +17,12 @@ namespace ExpenditureAppViewModel
         private string selectedDominantTag;
         private string selectedAssociatedTag;
         private string selectedPerson;
-        private List<string> allDominantTags = new List<string>() { "hello", "my", "name" };
-        private List<string> allAssociatedTags = new List<string>() { "hello", "what", "are" };
-        private List<string> allPeople = new List<string>() { "Benedict", "Beth", "Paul" };
+        private ObservableCollection<string> allDominantTags = new ObservableCollection<string>() { "hello", "my", "name" };
+        private ObservableCollection<string> allAssociatedTags = new ObservableCollection<string>() { "hello", "what", "are" };
+        private ObservableCollection<string> allPeople = new ObservableCollection<string>() { "Benedict", "Beth", "Paul" };
+        private string dominantTagForAdding;
+        private ObservableCollection<string> associatedTagsForAdding = new ObservableCollection<string>();
+        private ObservableCollection<string> peopleForAdding = new ObservableCollection<string>();
 
 
         public string InputDay
@@ -86,7 +89,7 @@ namespace ExpenditureAppViewModel
             }
         }
 
-        public List<string> AllDominantTags
+        public ObservableCollection<string> AllDominantTags
         {
             get
             {
@@ -110,7 +113,7 @@ namespace ExpenditureAppViewModel
             }
         }
 
-        public List<string> AllAssociatedTags
+        public ObservableCollection<string> AllAssociatedTags
         {
             get
             {
@@ -134,7 +137,7 @@ namespace ExpenditureAppViewModel
             }
         }
 
-        public List<string> AllPeople
+        public ObservableCollection<string> AllPeople
         {
             get
             {
@@ -142,11 +145,57 @@ namespace ExpenditureAppViewModel
             }
         }
 
+        public string DominantTagForAdding
+        {
+            get
+            {
+                return dominantTagForAdding;
+            }
+            set
+            {
+                if (dominantTagForAdding != value)
+                {
+                    dominantTagForAdding = value;
+                    RaisePropertyChanged("DominantTagForAdding");
+                }
+            }
+        }
+
+        public ObservableCollection<string> AssociatedTagsForAdding
+        {
+            get
+            {
+                return associatedTagsForAdding;
+            }
+            set
+            {
+                if (associatedTagsForAdding != value)
+                {
+                    associatedTagsForAdding = value;
+                    RaisePropertyChanged("AssociatedTagsForAdding");
+                }
+            }
+        }
+
+        public ObservableCollection<string> PeopleForAdding
+        {
+            get
+            {
+                return peopleForAdding;
+            }
+            set
+            {
+                if (peopleForAdding != value)
+                {
+                    peopleForAdding = value;
+                    RaisePropertyChanged("PeopleForAdding");
+                }
+            }
+        }
+
         public ViewModel()
         {
-            selectedDominantTag = allDominantTags[0];
-            selectedAssociatedTag = allAssociatedTags[0];
-            selectedPerson = allPeople[0];
+            
         }
 
         private void RaisePropertyChanged(string propertyName)
@@ -157,16 +206,62 @@ namespace ExpenditureAppViewModel
             }
         }
 
-        public ICommand InputButtonClickedCommand
+        public ICommand InputExpenditureCommand
         {
-            get { return new RelayCommand(new Action(this.OnInputButtonClicked)); }
+            get { return new RelayCommand(new Action(this.OnInputExpenditure)); }
         }
 
-        private void OnInputButtonClicked()
+        public ICommand AddDominantTagCommand
+        {
+            get { return new RelayCommand(new Action(this.OnAddDominantTag)); }
+        }
+
+        public ICommand AddAssociatedTagCommand
+        {
+            get { return new RelayCommand(new Action(this.OnAddAssociatedTag)); }
+        }
+
+        public ICommand AddPersonCommand
+        {
+            get { return new RelayCommand(new Action(this.OnAddPerson)); }
+        }
+
+        private void OnInputExpenditure()
         {
             InputDay = null;
             InputMonth = null;
             InputYear = null;
+        }
+
+        private void OnAddDominantTag()
+        {
+            if (DominantTagForAdding == null)
+            {
+                DominantTagForAdding = selectedDominantTag;
+                SelectedDominantTag = null;
+            }
+            else
+            {
+                // Open dialog to warn user
+            }
+        }
+
+        private void OnAddAssociatedTag()
+        {
+            if (!AssociatedTagsForAdding.Contains(selectedAssociatedTag))
+            {
+                AssociatedTagsForAdding.Add(selectedAssociatedTag);
+            }
+            SelectedAssociatedTag = null;
+        }
+
+        private void OnAddPerson()
+        {
+            if (!PeopleForAdding.Contains(selectedPerson))
+            {
+                PeopleForAdding.Add(selectedPerson);
+            }
+            SelectedPerson = null;
         }
     }
 }
