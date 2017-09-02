@@ -1,11 +1,12 @@
-﻿<Window x:Class="ExpenditureAppWPF.MainWindow"
+﻿<Window x:Class="ExpenditureAppWPF.ExpenditureApp"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExpenditureAppWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="885">
+        Title="MainWindow" Height="400" Width="885"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -63,7 +64,9 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Label Margin="0">Select Existing Dominant Tag</Label>
-                        <ComboBox MinHeight="20" MinWidth="150" Grid.Row="1" Margin="5"></ComboBox>
+                        <ComboBox MinHeight="20" MinWidth="150" Grid.Row="1" Margin="5"
+                                  ItemsSource="{Binding Path=AllDominantTags, UpdateSourceTrigger=PropertyChanged}"
+                                  SelectedValue="{Binding Path=SelectedDominantTag}"></ComboBox>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="2">
                         <Grid.RowDefinitions>
@@ -71,7 +74,9 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Label Margin="0">Select Existing Associated Tag</Label>
-                        <ComboBox MinHeight="20" MinWidth="150" Grid.Row="1" Margin="5"></ComboBox>
+                        <ComboBox MinHeight="20" MinWidth="150" Grid.Row="1" Margin="5"
+                                  ItemsSource="{Binding Path=AllAssociatedTags, UpdateSourceTrigger=PropertyChanged}"
+                                  SelectedValue="{Binding Path=SelectedAssociatedTag}"></ComboBox>
                     </Grid>
                     <Grid Grid.Column="2" Grid.Row="2">
                         <Grid.RowDefinitions>
@@ -79,7 +84,9 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Label Margin="0">Select Person</Label>
-                        <ComboBox MinHeight="20" MinWidth="150" Grid.Row="1" Margin="5"></ComboBox>
+                        <ComboBox MinHeight="20" MinWidth="150" Grid.Row="1" Margin="5"
+                                  ItemsSource="{Binding Path=AllPeople, UpdateSourceTrigger=PropertyChanged}"
+                                  SelectedValue="{Binding Path=SelectedPerson}"></ComboBox>
                     </Grid>
                     <Button Grid.Row="3" HorizontalAlignment="Center">Add</Button>
                     <Button Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center">Add</Button>
@@ -125,13 +132,13 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <TextBox Margin="5" />
-                            <TextBox Grid.Column="1" Margin="5" />
-                            <TextBox Grid.Column="2" Margin="5" />
+                            <TextBox Margin="5" Text="{Binding Path=InputDay, UpdateSourceTrigger=PropertyChanged}"  />
+                            <TextBox Grid.Column="1" Margin="5" Text="{Binding InputMonth, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Grid.Column="2" Margin="5" Text="{Binding InputYear, UpdateSourceTrigger=PropertyChanged}"/>
                         </Grid>
                         <Label Grid.Column="1">Amount Spent</Label>
-                        <TextBox Grid.Column="1" Grid.Row="1" Margin="5"></TextBox>
-                        <Button Grid.Column="2" Grid.Row="2" Margin="5">Input</Button>
+                        <TextBox Grid.Column="1" Grid.Row="1" Margin="5" Text="{Binding InputExpenditure, UpdateSourceTrigger=PropertyChanged}"></TextBox>
+                        <Button Grid.Column="2" Grid.Row="2" Margin="5" Command="{Binding Path=InputButtonClickedCommand}">Input</Button>
                     </Grid>
                     <Grid Grid.Column="3" Grid.Row="1" Grid.RowSpan="4">
                         <Grid.RowDefinitions>

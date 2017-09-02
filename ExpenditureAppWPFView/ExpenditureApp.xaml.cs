@@ -16,13 +16,18 @@ using System.Windows.Shapes;
 namespace ExpenditureAppWPF
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ExpenditureApp.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ExpenditureApp : Window
     {
-        public MainWindow()
+        private ExpenditureAppViewModel.ViewModel viewModel;
+        public ExpenditureApp()
         {
             InitializeComponent();
+            viewModel = new ExpenditureAppViewModel.ViewModel();
+            this.DataContext = viewModel;
         }
+
+
     }
 }
