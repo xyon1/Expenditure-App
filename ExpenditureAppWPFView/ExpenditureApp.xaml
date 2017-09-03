@@ -109,7 +109,7 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Label HorizontalAlignment="Center">Add New Dominant Tag</Label>
-                        <Button HorizontalAlignment="Center" Grid.Row="1">Add Tag</Button>
+                        <Button Name="AddNewDominantTagBtn" HorizontalAlignment="Center" Grid.Row="1">Add Tag</Button>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="4">
                         <Grid.RowDefinitions>
@@ -117,7 +117,7 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Label HorizontalAlignment="Center">Add New Associated Tag</Label>
-                        <Button HorizontalAlignment="Center" Grid.Row="1">Add Tag</Button>
+                        <Button Name="AddNewAssociatedTagBtn" HorizontalAlignment="Center" Grid.Row="1">Add Tag</Button>
                     </Grid>
                     <Grid Grid.Column="2" Grid.Row="4">
                         <Grid.RowDefinitions>
@@ -125,7 +125,7 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Label HorizontalAlignment="Center">Add Person</Label>
-                        <Button HorizontalAlignment="Center" Grid.Row="1">Add Tag</Button>
+                        <Button Name="AddNewPersonBtn" HorizontalAlignment="Center" Grid.Row="1">Add Tag</Button>
                     </Grid>
                     <Grid Grid.Column="3">
                         <Grid.RowDefinitions>

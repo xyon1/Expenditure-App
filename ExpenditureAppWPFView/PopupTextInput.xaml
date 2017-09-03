@@ -1,0 +1,30 @@
+﻿<Window x:Class="ExpenditureAppWPF.PopupTextInput"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExpenditureAppWPF"
+        mc:Ignorable="d"
+        Width="300"
+        SizeToContent="Height"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="ToolWindow">
+    <Grid FocusManager.FocusedElement="{Binding ElementName=TextBox}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Name="label"></Label>
+        <TextBox Name="TextBox" Grid.Row="1" MinHeight="20" HorizontalAlignment="Center" VerticalAlignment="Center"
+                 MinWidth="100" Margin="5" Text="{Binding UserTextInput}"></TextBox>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Name="AddBtn" HorizontalAlignment="Center" Margin="5" Width="50">Add</Button>
+            <Button Name="CancelBtn" HorizontalAlignment="Center" Grid.Column="1" Margin="5" Width="50">Cancel</Button>
+        </Grid>
+    </Grid>
+</Window>

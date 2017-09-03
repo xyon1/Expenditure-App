@@ -22,12 +22,13 @@ namespace ExpenditureAppViewModel
         private List<string> selectedPeopleToRemove = new List<string>();
         private List<string> selectedAssociatedTagsToRemove = new List<string>();
         private string selectedPersonToAdd;
-        private ObservableCollection<string> allDominantTags = new ObservableCollection<string>() { "hello", "my", "name" };
-        private ObservableCollection<string> allAssociatedTags = new ObservableCollection<string>() { "hello", "what", "are" };
+        private ObservableCollection<string> allDominantTags = new ObservableCollection<string>() { "Beer", "Coffee", "Food" };
+        private ObservableCollection<string> allAssociatedTags = new ObservableCollection<string>() { "Bar", "SuperMarket", "Leisure" };
         private ObservableCollection<string> allPeople = new ObservableCollection<string>() { "Benedict", "Beth", "Paul" };
         private string dominantTagForAdding;
         private ObservableCollection<string> associatedTagsForAdding = new ObservableCollection<string>();
         private ObservableCollection<string> peopleForAdding = new ObservableCollection<string>();
+        private string userTextInput;
 
 
         public string InputDay
@@ -228,6 +229,21 @@ namespace ExpenditureAppViewModel
             }
         }
 
+        public string UserTextInput
+        {
+            get
+            {
+                return userTextInput;
+            }
+            set
+            {
+                if (userTextInput != value)
+                {
+                    userTextInput = value;
+                }
+            }
+        }
+
         public ViewModel(Action<string, string> messageForUser, Func<string, string, bool> decisionForUser)
         {
             this.messageForUser = messageForUser;
@@ -267,6 +283,21 @@ namespace ExpenditureAppViewModel
         public ICommand RemovePersonCommand
         {
             get { return new RelayCommand(new Action(this.OnRemovePerson)); }
+        }
+
+        public ICommand AddNewDominantTagCommand
+        {
+            get { return new RelayCommand(new Action(this.OnAddNewDominantTag)); }
+        }
+
+        public ICommand AddNewAssociatedTagCommand
+        {
+            get { return new RelayCommand(new Action(this.OnAddNewAssociatedTag)); }
+        }
+
+        public ICommand AddNewPersonCommand
+        {
+            get { return new RelayCommand(new Action(this.OnAddNewPerson)); }
         }
 
         private void RaisePropertyChanged(string propertyName)
@@ -369,6 +400,24 @@ namespace ExpenditureAppViewModel
                     PeopleForAdding.Remove(selectedPersonToRemove);
                 }
             }
+        }
+
+        private void OnAddNewDominantTag()
+        {
+            AllDominantTags.Add(UserTextInput);
+            UserTextInput = null;
+        }
+
+        private void OnAddNewAssociatedTag()
+        {
+            AllAssociatedTags.Add(UserTextInput);
+            UserTextInput = null;
+        }
+
+        private void OnAddNewPerson()
+        {
+            AllPeople.Add(UserTextInput);
+            UserTextInput = null;
         }
     }
 }
