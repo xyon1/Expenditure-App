@@ -24,7 +24,9 @@ namespace ExpenditureAppWPF
         public ExpenditureApp()
         {
             InitializeComponent();
-            viewModel = new ExpenditureAppViewModel.ViewModel();
+            Action<string, string> messageForUser = ((message, caption) => MessageBox.Show(message, caption));
+            Func<string, string, bool> decisionForUser = (message, caption) => MessageBox.Show(message, caption, MessageBoxButton.YesNo) == MessageBoxResult.Yes;
+            viewModel = new ExpenditureAppViewModel.ViewModel(messageForUser, decisionForUser);
             this.DataContext = viewModel;
         }
 

@@ -11,6 +11,8 @@ namespace ExpenditureAppViewModel
     public class ViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        public Action<string, string> messageForUser;
+        public Func<string, string, bool> decisionForUser;
         private string inputDay;
         private string inputMonth;
         private string inputYear;
@@ -193,9 +195,10 @@ namespace ExpenditureAppViewModel
             }
         }
 
-        public ViewModel()
+        public ViewModel(Action<string, string> messageForUser, Func<string, string, bool> decisionForUser)
         {
-            
+            this.messageForUser = messageForUser;
+            this.decisionForUser = decisionForUser;
         }
 
         private void RaisePropertyChanged(string propertyName)
@@ -237,29 +240,46 @@ namespace ExpenditureAppViewModel
         {
             if (DominantTagForAdding == null)
             {
-                DominantTagForAdding = selectedDominantTag;
+                DominantTagForAdding = SelectedDominantTag;
                 SelectedDominantTag = null;
             }
-            else
+            else if (DominantTagForAdding == SelectedDominantTag)
             {
-                // Open dialog to warn user
+                messageForUser("Dominant tag already added", "Warning");
             }
+            else if (DominantTagForAdding != SelectedDominantTag)
+            {
+                bool replaceTag = decisionForUser("Dominant tag already added. Replace with selected tag", "Replace tag?");
+                if (replaceTag)
+                {
+                    DominantTagForAdding = SelectedDominantTag;
+                }
+            }
+            SelectedDominantTag = null;
         }
 
         private void OnAddAssociatedTag()
         {
-            if (!AssociatedTagsForAdding.Contains(selectedAssociatedTag))
+            if (!AssociatedTagsForAdding.Contains(SelectedAssociatedTag))
             {
-                AssociatedTagsForAdding.Add(selectedAssociatedTag);
+                AssociatedTagsForAdding.Add(SelectedAssociatedTag);
+            }
+            else
+            {
+                messageForUser("Associated tag already added", "Warning");
             }
             SelectedAssociatedTag = null;
         }
 
         private void OnAddPerson()
         {
-            if (!PeopleForAdding.Contains(selectedPerson))
+            if (!PeopleForAdding.Contains(SelectedPerson))
             {
-                PeopleForAdding.Add(selectedPerson);
+                PeopleForAdding.Add(SelectedPerson);
+            }
+            else
+            {
+                messageForUser("Person already added", "Warning");
             }
             SelectedPerson = null;
         }
