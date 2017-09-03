@@ -58,9 +58,12 @@
                         <ListView MinWidth="150" MinHeight="60" Margin="5" Grid.Row="1"
                                   ItemsSource="{Binding Path=PeopleForAdding, UpdateSourceTrigger=PropertyChanged}"></ListView>
                     </Grid>
-                    <Button Grid.Row="1" HorizontalAlignment="Center">Remove Tag</Button>
-                    <Button Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">Remove Tag</Button>
-                    <Button Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center">Remove Tag</Button>
+                    <Button Name="RemoveDominantTagBtn" Grid.Row="1" HorizontalAlignment="Center"
+                            Command="{Binding Path=RemoveDominantTagCommand}">Remove Tag</Button>
+                    <Button Name="RemoveAssociatedTagBtn" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center"
+                            Command="{Binding Path=RemoveAssoiatedTagCommand}">Remove Tag</Button>
+                    <Button Name="RemovePersonBtn" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center"
+                            Command="{Binding Path=RemovePersonCommand}">Remove Tag</Button>
                     <Grid Grid.Row="2">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -69,7 +72,7 @@
                         <Label Margin="0">Select Existing Dominant Tag</Label>
                         <ComboBox MinHeight="20" MinWidth="150" Grid.Row="1" Margin="5"
                                   ItemsSource="{Binding Path=AllDominantTags, UpdateSourceTrigger=PropertyChanged}"
-                                  SelectedValue="{Binding Path=SelectedDominantTag}"></ComboBox>
+                                  SelectedItem="{Binding Path=SelectedDominantTagToAdd, UpdateSourceTrigger=PropertyChanged}"></ComboBox>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="2">
                         <Grid.RowDefinitions>
@@ -79,7 +82,7 @@
                         <Label Margin="0">Select Existing Associated Tag</Label>
                         <ComboBox MinHeight="20" MinWidth="150" Grid.Row="1" Margin="5"
                                   ItemsSource="{Binding Path=AllAssociatedTags, UpdateSourceTrigger=PropertyChanged}"
-                                  SelectedValue="{Binding Path=SelectedAssociatedTag}"></ComboBox>
+                                  SelectedItem="{Binding Path=SelectedAssociatedTagToAdd}"></ComboBox>
                     </Grid>
                     <Grid Grid.Column="2" Grid.Row="2">
                         <Grid.RowDefinitions>
@@ -89,13 +92,13 @@
                         <Label Margin="0">Select Person</Label>
                         <ComboBox MinHeight="20" MinWidth="150" Grid.Row="1" Margin="5"
                                   ItemsSource="{Binding Path=AllPeople, UpdateSourceTrigger=PropertyChanged}"
-                                  SelectedValue="{Binding Path=SelectedPerson}"></ComboBox>
+                                  SelectedItem="{Binding Path=SelectedPersonToAdd}"></ComboBox>
                     </Grid>
-                    <Button Grid.Row="3" HorizontalAlignment="Center" 
+                    <Button Name="AddDominantTagBtn" Grid.Row="3" HorizontalAlignment="Center" 
                             Command="{Binding Path=AddDominantTagCommand}">Add</Button>
-                    <Button Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center"
+                    <Button Name="AddAssociatedTagBtn" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center"
                             Command="{Binding Path=AddAssociatedTagCommand}">Add</Button>
-                    <Button Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center"
+                    <Button Name="AddPersonBtn" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center"
                             Command="{Binding Path=AddPersonCommand}">Add</Button>
                     <Grid Grid.Row="4">
                         <Grid.RowDefinitions>

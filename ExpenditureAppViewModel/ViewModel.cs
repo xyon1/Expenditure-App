@@ -16,9 +16,11 @@ namespace ExpenditureAppViewModel
         private string inputDay;
         private string inputMonth;
         private string inputYear;
-        private string selectedDominantTag;
-        private string selectedAssociatedTag;
-        private string selectedPerson;
+        private string selectedDominantTagToAdd;
+        private string selectedAssociatedTagToAdd;
+        private string selectedPersonToRemove;
+        private string selectedAssociatedTagToRemove;
+        private string selectedPersonToAdd;
         private ObservableCollection<string> allDominantTags = new ObservableCollection<string>() { "hello", "my", "name" };
         private ObservableCollection<string> allAssociatedTags = new ObservableCollection<string>() { "hello", "what", "are" };
         private ObservableCollection<string> allPeople = new ObservableCollection<string>() { "Benedict", "Beth", "Paul" };
@@ -75,18 +77,18 @@ namespace ExpenditureAppViewModel
             }
         }
 
-        public string SelectedDominantTag
+        public string SelectedDominantTagToAdd
         {
             get
             {
-                return selectedDominantTag;
+                return selectedDominantTagToAdd;
             }
             set
             {
-                if (selectedDominantTag != value)
+                if (selectedDominantTagToAdd != value)
                 {
-                    selectedDominantTag = value;
-                    RaisePropertyChanged("SelectedDominantTag");
+                    selectedDominantTagToAdd = value;
+                    RaisePropertyChanged("SelectedDominantTagToAdd");
                 }
             }
         }
@@ -99,18 +101,18 @@ namespace ExpenditureAppViewModel
             }
         }
 
-        public string SelectedAssociatedTag
+        public string SelectedAssociatedTagToAdd
         {
             get
             {
-                return selectedAssociatedTag;
+                return selectedAssociatedTagToAdd;
             }
             set
             {
-                if (selectedAssociatedTag != value)
+                if (selectedAssociatedTagToAdd != value)
                 {
-                    selectedAssociatedTag = value;
-                    RaisePropertyChanged("SelectedAssociatedTag");
+                    selectedAssociatedTagToAdd = value;
+                    RaisePropertyChanged("SelectedAssociatedTagToAdd");
                 }
             }
         }
@@ -123,18 +125,18 @@ namespace ExpenditureAppViewModel
             }
         }
 
-        public string SelectedPerson
+        public string SelectedPersonToAdd
         {
             get
             {
-                return selectedPerson;
+                return selectedPersonToAdd;
             }
             set
             {
-                if (selectedPerson != value)
+                if (selectedPersonToAdd != value)
                 {
-                    selectedPerson = value;
-                    RaisePropertyChanged("SelectedPerson");
+                    selectedPersonToAdd = value;
+                    RaisePropertyChanged("SelectedPersonToAdd");
                 }
             }
         }
@@ -195,6 +197,36 @@ namespace ExpenditureAppViewModel
             }
         }
 
+        public string SelectedAssociatedTagToRemove
+        {
+            get
+            {
+                return selectedAssociatedTagToRemove;
+            }
+            set
+            {
+                if (selectedAssociatedTagToRemove != value)
+                {
+                    selectedAssociatedTagToRemove = value;
+                }
+            }
+        }
+
+        public string SelectedPersonToRemove
+        {
+            get
+            {
+                return selectedPersonToRemove;
+            }
+            set
+            {
+                if (selectedPersonToRemove != value)
+                {
+                    selectedPersonToRemove = value;
+                }
+            }
+        }
+
         public ViewModel(Action<string, string> messageForUser, Func<string, string, bool> decisionForUser)
         {
             this.messageForUser = messageForUser;
@@ -229,6 +261,21 @@ namespace ExpenditureAppViewModel
             get { return new RelayCommand(new Action(this.OnAddPerson)); }
         }
 
+        public ICommand RemoveDominantTagCommand
+        {
+            get { return new RelayCommand(new Action(this.OnRemoveDominantTag)); }
+        }
+
+        public ICommand RemoveAssociatedTagCommand
+        {
+            get { return new RelayCommand(new Action(this.OnRemoveAssociatedTag)); }
+        }
+
+        public ICommand RemovePersonCommand
+        {
+            get { return new RelayCommand(new Action(this.OnRemovePerson)); }
+        }
+
         private void OnInputExpenditure()
         {
             InputDay = null;
@@ -238,50 +285,77 @@ namespace ExpenditureAppViewModel
 
         private void OnAddDominantTag()
         {
-            if (DominantTagForAdding == null)
+            if (SelectedDominantTagToAdd == null)
             {
-                DominantTagForAdding = SelectedDominantTag;
-                SelectedDominantTag = null;
+                messageForUser("Please select a dominant tag and try again", "No tag selected");
             }
-            else if (DominantTagForAdding == SelectedDominantTag)
+            else if (DominantTagForAdding == null)
+            {
+                DominantTagForAdding = SelectedDominantTagToAdd;
+                SelectedDominantTagToAdd = null;
+            }
+            else if (DominantTagForAdding == SelectedDominantTagToAdd)
             {
                 messageForUser("Dominant tag already added", "Warning");
             }
-            else if (DominantTagForAdding != SelectedDominantTag)
+            else if (DominantTagForAdding != SelectedDominantTagToAdd)
             {
                 bool replaceTag = decisionForUser("Dominant tag already added. Replace with selected tag", "Replace tag?");
                 if (replaceTag)
                 {
-                    DominantTagForAdding = SelectedDominantTag;
+                    DominantTagForAdding = SelectedDominantTagToAdd;
                 }
             }
-            SelectedDominantTag = null;
+            SelectedDominantTagToAdd = null;
         }
 
         private void OnAddAssociatedTag()
         {
-            if (!AssociatedTagsForAdding.Contains(SelectedAssociatedTag))
+            if (SelectedAssociatedTagToAdd == null)
             {
-                AssociatedTagsForAdding.Add(SelectedAssociatedTag);
+                messageForUser("Please select an associated tag and try again", "No tag selected");
+            }
+            else if (!AssociatedTagsForAdding.Contains(SelectedAssociatedTagToAdd))
+            {
+                AssociatedTagsForAdding.Add(SelectedAssociatedTagToAdd);
             }
             else
             {
                 messageForUser("Associated tag already added", "Warning");
             }
-            SelectedAssociatedTag = null;
+            SelectedAssociatedTagToAdd = null;
         }
 
         private void OnAddPerson()
         {
-            if (!PeopleForAdding.Contains(SelectedPerson))
+            if (SelectedPersonToAdd == null)
             {
-                PeopleForAdding.Add(SelectedPerson);
+                messageForUser("Please select a person and try again", "No person selected");
+            }
+            else if (!PeopleForAdding.Contains(SelectedPersonToAdd))
+            {
+                PeopleForAdding.Add(SelectedPersonToAdd);
             }
             else
             {
                 messageForUser("Person already added", "Warning");
             }
-            SelectedPerson = null;
+            SelectedPersonToAdd = null;
+        }
+
+        private void OnRemoveDominantTag()
+        {
+            DominantTagForAdding = null;
+        }
+
+        private void OnRemoveAssociatedTag()
+        {
+            AssociatedTagsForAdding.Remove(SelectedAssociatedTagToRemove);
+        }
+
+        private void OnRemovePerson()
+        {
+            PeopleForAdding.Remove(SelectedPersonToRemove);
         }
     }
 }
