@@ -13,13 +13,14 @@ namespace ExpenditureAppViewModel
         public event PropertyChangedEventHandler PropertyChanged;
         public Action<string, string> messageForUser;
         public Func<string, string, bool> decisionForUser;
+        public Func<string, string, string> requestForTagFromUser;
         private string inputDay;
         private string inputMonth;
         private string inputYear;
         private string selectedDominantTagToAdd;
         private string selectedAssociatedTagToAdd;
-        private string selectedPersonToRemove;
-        private string selectedAssociatedTagToRemove;
+        private List<string> selectedPeopleToRemove = new List<string>();
+        private List<string> selectedAssociatedTagsToRemove = new List<string>();
         private string selectedPersonToAdd;
         private ObservableCollection<string> allDominantTags = new ObservableCollection<string>() { "hello", "my", "name" };
         private ObservableCollection<string> allAssociatedTags = new ObservableCollection<string>() { "hello", "what", "are" };
@@ -197,32 +198,32 @@ namespace ExpenditureAppViewModel
             }
         }
 
-        public string SelectedAssociatedTagToRemove
+        public List<string> SelectedAssociatedTagsToRemove
         {
             get
             {
-                return selectedAssociatedTagToRemove;
+                return selectedAssociatedTagsToRemove;
             }
             set
             {
-                if (selectedAssociatedTagToRemove != value)
+                if (selectedAssociatedTagsToRemove != value)
                 {
-                    selectedAssociatedTagToRemove = value;
+                    selectedAssociatedTagsToRemove = value;
                 }
             }
         }
 
-        public string SelectedPersonToRemove
+        public List<string> SelectedPeopleToRemove
         {
             get
             {
-                return selectedPersonToRemove;
+                return selectedPeopleToRemove;
             }
             set
             {
-                if (selectedPersonToRemove != value)
+                if (selectedPeopleToRemove != value)
                 {
-                    selectedPersonToRemove = value;
+                    selectedPeopleToRemove = value;
                 }
             }
         }
@@ -231,14 +232,6 @@ namespace ExpenditureAppViewModel
         {
             this.messageForUser = messageForUser;
             this.decisionForUser = decisionForUser;
-        }
-
-        private void RaisePropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
         }
 
         public ICommand InputExpenditureCommand
@@ -274,6 +267,14 @@ namespace ExpenditureAppViewModel
         public ICommand RemovePersonCommand
         {
             get { return new RelayCommand(new Action(this.OnRemovePerson)); }
+        }
+
+        private void RaisePropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
         }
 
         private void OnInputExpenditure()
@@ -350,12 +351,24 @@ namespace ExpenditureAppViewModel
 
         private void OnRemoveAssociatedTag()
         {
-            AssociatedTagsForAdding.Remove(SelectedAssociatedTagToRemove);
+            foreach (string selectedAssociatedTagToRemove in SelectedAssociatedTagsToRemove)
+            {
+                if (AssociatedTagsForAdding.Contains(selectedAssociatedTagToRemove))
+                {
+                    AssociatedTagsForAdding.Remove(selectedAssociatedTagToRemove);
+                }
+            }
         }
 
         private void OnRemovePerson()
         {
-            PeopleForAdding.Remove(SelectedPersonToRemove);
+            foreach (string selectedPersonToRemove in SelectedPeopleToRemove)
+            {
+                if (PeopleForAdding.Contains(selectedPersonToRemove))
+                {
+                    PeopleForAdding.Remove(selectedPersonToRemove);
+                }
+            }
         }
     }
 }
