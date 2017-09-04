@@ -43,9 +43,9 @@ namespace ExpenditureAppWPF
             {
                 if (item.GetType() == typeof(string))
                 {
-                    if (!viewModel.SelectedAssociatedTagsToRemove.Contains((string)item))
+                    if (!viewModel.AssociatedTagsToRemove.Contains((string)item))
                     {
-                        viewModel.SelectedAssociatedTagsToRemove.Add((string)item);
+                        viewModel.AssociatedTagsToRemove.Add((string)item);
                     }
                 }
             }
@@ -57,9 +57,9 @@ namespace ExpenditureAppWPF
             {
                 if (item.GetType() == typeof(string))
                 {
-                    if (!viewModel.SelectedPeopleToRemove.Contains((string)item))
+                    if (!viewModel.PeopleToRemove.Contains((string)item))
                     {
-                        viewModel.SelectedPeopleToRemove.Add((string)item);
+                        viewModel.PeopleToRemove.Add((string)item);
                     }
                 }
             }

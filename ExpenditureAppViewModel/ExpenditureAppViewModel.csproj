@@ -35,7 +35,6 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <Folder Include="Dialogs\DialogService\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="RelayCommand.cs" />

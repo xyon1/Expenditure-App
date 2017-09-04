@@ -17,6 +17,7 @@ namespace ExpenditureAppViewModel
         private string inputDay;
         private string inputMonth;
         private string inputYear;
+        private string inputExpenditure;
         private string selectedDominantTagToAdd;
         private string selectedAssociatedTagToAdd;
         private List<string> selectedPeopleToRemove = new List<string>();
@@ -75,6 +76,22 @@ namespace ExpenditureAppViewModel
                 {
                     inputYear = value;
                     RaisePropertyChanged("InputYear");
+                }
+            }
+        }
+
+        public string InputExpenditure
+        {
+            get
+            {
+                return inputExpenditure;
+            }
+            set
+            {
+                if (inputExpenditure != value)
+                {
+                    inputExpenditure = value;
+                    RaisePropertyChanged("InputExpenditure");
                 }
             }
         }
@@ -199,7 +216,7 @@ namespace ExpenditureAppViewModel
             }
         }
 
-        public List<string> SelectedAssociatedTagsToRemove
+        public List<string> AssociatedTagsToRemove
         {
             get
             {
@@ -214,7 +231,7 @@ namespace ExpenditureAppViewModel
             }
         }
 
-        public List<string> SelectedPeopleToRemove
+        public List<string> PeopleToRemove
         {
             get
             {
@@ -250,9 +267,9 @@ namespace ExpenditureAppViewModel
             this.decisionForUser = decisionForUser;
         }
 
-        public ICommand InputExpenditureCommand
+        public ICommand RecordExpenditureCommand
         {
-            get { return new RelayCommand(new Action(this.OnInputExpenditure)); }
+            get { return new RelayCommand(new Action(this.OnRecordExpenditure)); }
         }
 
         public ICommand AddDominantTagCommand
@@ -300,6 +317,11 @@ namespace ExpenditureAppViewModel
             get { return new RelayCommand(new Action(this.OnAddNewPerson)); }
         }
 
+        public ICommand ResetPropertiesCommand
+        {
+            get { return new RelayCommand(new Action(ResetProperties)); }
+        } 
+
         private void RaisePropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
@@ -308,11 +330,9 @@ namespace ExpenditureAppViewModel
             }
         }
 
-        private void OnInputExpenditure()
+        private void OnRecordExpenditure()
         {
-            InputDay = null;
-            InputMonth = null;
-            InputYear = null;
+            ResetProperties();
         }
 
         private void OnAddDominantTag()
@@ -382,7 +402,7 @@ namespace ExpenditureAppViewModel
 
         private void OnRemoveAssociatedTag()
         {
-            foreach (string selectedAssociatedTagToRemove in SelectedAssociatedTagsToRemove)
+            foreach (string selectedAssociatedTagToRemove in AssociatedTagsToRemove)
             {
                 if (AssociatedTagsForAdding.Contains(selectedAssociatedTagToRemove))
                 {
@@ -393,7 +413,7 @@ namespace ExpenditureAppViewModel
 
         private void OnRemovePerson()
         {
-            foreach (string selectedPersonToRemove in SelectedPeopleToRemove)
+            foreach (string selectedPersonToRemove in PeopleToRemove)
             {
                 if (PeopleForAdding.Contains(selectedPersonToRemove))
                 {
@@ -418,6 +438,20 @@ namespace ExpenditureAppViewModel
         {
             AllPeople.Add(UserTextInput);
             UserTextInput = null;
+        }
+
+        private void ResetProperties()
+        {
+            InputDay = null;
+            InputMonth = null;
+            InputYear = null;
+            InputExpenditure = null;
+            SelectedDominantTagToAdd = null;
+            SelectedAssociatedTagToAdd = null;
+            SelectedPersonToAdd = null;
+            DominantTagForAdding = null;
+            AssociatedTagsForAdding = new ObservableCollection<string>();
+            PeopleForAdding = new ObservableCollection<string>();
         }
     }
 }
