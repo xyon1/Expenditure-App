@@ -108,6 +108,10 @@
       <Project>{ae570863-1112-47e6-8669-bc63447ab0bf}</Project>
       <Name>ExpenditureAppViewModel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ViewViewModelLink\ViewViewModelLink.csproj">
+      <Project>{90c06ce5-e1be-4070-9448-5ede2b6726dc}</Project>
+      <Name>ViewViewModelLink</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

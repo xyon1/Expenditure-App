@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AE570863-1112-47E6-8669-BC63447AB0BF}</ProjectGuid>
+    <ProjectGuid>{90C06CE5-E1BE-4070-9448-5EDE2B6726DC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExpenditureAppViewModel</RootNamespace>
-    <AssemblyName>ExpenditureAppViewModel</AssemblyName>
+    <RootNamespace>ViewViewModelLink</RootNamespace>
+    <AssemblyName>ViewViewModelLink</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,28 +35,16 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <ProjectReference Include="..\GeneralUseClasses\GeneralUseClasses.csproj">
-      <Project>{df538b8b-752f-415c-bed9-5f49f8a42c5a}</Project>
-      <Name>GeneralUseClasses</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ModelViewModelLink\ModelViewModelLink.csproj">
       <Project>{b5ba2038-2919-4a0d-830f-147b52ec4b1d}</Project>
       <Name>ModelViewModelLink</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ViewViewModelLink\ViewViewModelLink.csproj">
-      <Project>{90c06ce5-e1be-4070-9448-5ede2b6726dc}</Project>
-      <Name>ViewViewModelLink</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EventArgs\ExceptionForUserEventArgs.cs" />
-    <Compile Include="Exceptions\ExceptionForUser.cs" />
-    <Compile Include="ExpenditureEntry.cs" />
-    <Compile Include="RelayCommand.cs" />
-    <Compile Include="ViewModel.cs" />
+    <Compile Include="Contracts\IProvideRecordExpenditureData.cs" />
+    <Compile Include="RecordExpenditureDataFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

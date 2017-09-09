@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
+using ViewViewModelLink;
 
 namespace ExpenditureAppWPF
 {
@@ -28,7 +29,7 @@ namespace ExpenditureAppWPF
             InitializeComponent();
             Action<string, string> messageForUser = ((message, caption) => System.Windows.MessageBox.Show(message, caption));
             Func<string, string, bool> decisionForUser = (message, caption) => System.Windows.MessageBox.Show(message, caption, MessageBoxButton.YesNo) == MessageBoxResult.Yes;
-            viewModel = new ExpenditureAppViewModel.ViewModel(messageForUser, decisionForUser);
+            viewModel = new ExpenditureAppViewModel.ViewModel(messageForUser, decisionForUser, new RecordExpenditureDataFactory());
             DataContext = viewModel;
 
             AssociatedTagsListView.SelectionChanged += (s,e) => OnAssociatedTagsListViewSelectionChanged(s,e);
@@ -42,6 +43,8 @@ namespace ExpenditureAppWPF
             InputMonthTextBox.KeyUp += (s, e) => OnInputDateTextBoxKeyUp(s);
             InputYearTextBox.KeyUp += (s, e) => OnInputDateTextBoxKeyUp(s);
             InputExpenditureTextBox.KeyUp += (s, e) => OnInputExpenditureTextBoxKeyUp(e);
+
+            viewModel.exceptionEventHandler += (s,e) => OnViewModelException(e.exception);
         }
 
         private void OnAssociatedTagsListViewSelectionChanged(object sender, SelectionChangedEventArgs args)
@@ -52,6 +55,7 @@ namespace ExpenditureAppWPF
                 {
                     if (!viewModel.AssociatedTagsToRemove.Contains((string)item))
                     {
+                        // Convert to ObservableCollection so can remove this code?
                         viewModel.AssociatedTagsToRemove.Add((string)item);
                     }
                 }
@@ -66,6 +70,7 @@ namespace ExpenditureAppWPF
                 {
                     if (!viewModel.PeopleToRemove.Contains((string)item))
                     {
+                        // Convert to ObservableCollection so can remove this code?
                         viewModel.PeopleToRemove.Add((string)item);
                     }
                 }
@@ -130,6 +135,11 @@ namespace ExpenditureAppWPF
                     FocusManager.SetFocusedElement(this, InputExpenditureTextBox);
                 }
             }
+        }
+
+        private void OnViewModelException(Exception e)
+        {
+            MessageBox.Show(e.Message, "Warning!");
         }
     }
 }

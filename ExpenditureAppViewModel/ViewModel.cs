@@ -5,15 +5,23 @@ using System.Text;
 using System.ComponentModel;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
+using ModelViewModelLink.Services;
+using ModelViewModelLink.Contracts;
+using ExpenditureAppViewModel.EventArgs;
+using ExpenditureAppViewModel.Exceptions;
+using GeneralUseClasses;
+using ViewViewModelLink.Contracts;
 
 namespace ExpenditureAppViewModel
 {
     public class ViewModel : INotifyPropertyChanged
     {
+        IRecordExpenditureData recorder;
         public event PropertyChangedEventHandler PropertyChanged;
         public Action<string, string> messageForUser;
         public Func<string, string, bool> decisionForUser;
         public Func<string, string, string> requestForTagFromUser;
+        public EventHandler<ExceptionForUserEventArgs> exceptionEventHandler;
         private string inputDay;
         private string inputMonth;
         private string inputYear;
@@ -261,8 +269,9 @@ namespace ExpenditureAppViewModel
             }
         }
 
-        public ViewModel(Action<string, string> messageForUser, Func<string, string, bool> decisionForUser)
+        public ViewModel(Action<string, string> messageForUser, Func<string, string, bool> decisionForUser, IRecordExpenditureDataFactory recorderFactory)
         {
+            recorder = recorderFactory.GetExpenditureDataRecorder();
             this.messageForUser = messageForUser;
             this.decisionForUser = decisionForUser;
         }
@@ -332,7 +341,75 @@ namespace ExpenditureAppViewModel
 
         private void OnRecordExpenditure()
         {
-            ResetProperties();
+            try
+            {
+                ExpenditureDate date = ConvertDate();
+                double expenditure = ConvertExpenditure();
+                CheckForTags();
+                ExpenditureEntry entry = new ExpenditureEntry(dominantTagForAdding, associatedTagsForAdding.ToList(), peopleForAdding.ToList(), expenditure, date);
+                recorder.RecordExpenditureData(entry);
+                ResetProperties();
+            }
+            catch (ExceptionForUser e)
+            {
+                ExceptionForUserEventArgs args = new ExceptionForUserEventArgs(e);
+                exceptionEventHandler.Invoke(this, args);
+            }
+        }
+
+        private ExpenditureDate ConvertDate()
+        {
+            int day;
+            int month;
+            int year;
+            if (string.IsNullOrWhiteSpace(inputDay) || string.IsNullOrWhiteSpace(inputMonth) || string.IsNullOrWhiteSpace(inputYear))
+            {
+                throw new ExceptionForUser("Missing date");
+            }
+            bool dayCorrectFormat = int.TryParse(inputDay, out day);
+            bool monthCorrectFormat = int.TryParse(inputMonth, out month);
+            bool yearCorrectFormat = int.TryParse(inputYear, out year);
+
+            if (!(dayCorrectFormat && monthCorrectFormat && yearCorrectFormat))
+            {
+                throw new ExceptionForUser("Date is not in integer format");
+            }
+
+            return new ExpenditureDate(day, month, year);
+        }
+
+        private double ConvertExpenditure()
+        {
+            double expenditure;
+            if (inputExpenditure == null)
+            {
+                throw new ExceptionForUser("Missing expenditure");
+            }
+
+            if (!double.TryParse(inputExpenditure, out expenditure))
+            {
+                throw new ExceptionForUser("Expenditure is not  valid number");
+            }
+
+            return expenditure;
+        }
+
+        private void CheckForTags()
+        {
+            if (string.IsNullOrWhiteSpace(dominantTagForAdding))
+            {
+                throw new ExceptionForUser("Missing dominant tag");
+            }
+
+            if (associatedTagsForAdding.Count == 0)
+            {
+                throw new ExceptionForUser("Missing associated tag");
+            }
+
+            if (peopleForAdding.Count == 0)
+            {
+                throw new ExceptionForUser("Missing person");
+            }
         }
 
         private void OnAddDominantTag()
