@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using ModelViewModelLink.Services;
 using ViewViewModelLink.Contracts;
+using xml
 
 namespace ViewViewModelLink
 {
