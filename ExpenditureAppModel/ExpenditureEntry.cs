@@ -8,7 +8,6 @@ namespace ExpenditureAppModel
 {
     public class ExpenditureEntry : IComparable<ExpenditureEntry>
     {
-        internal int xmlID;
         internal bool budgetItem;
         internal string dominantTag;
         internal List<string> associatedTags;
@@ -36,7 +35,6 @@ namespace ExpenditureAppModel
         public ExpenditureEntry(int xmlID, bool budgetItem, string dominantTag, List<string> associatedTags, List<string> people,
     double expenditure, ExpenditureDate date)
         {
-            this.xmlID = xmlID;
             this.budgetItem = budgetItem;
             this.dominantTag = dominantTag;
             this.associatedTags = associatedTags;

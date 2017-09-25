@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewViewModelLink", "ViewVi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneralUseClasses", "GeneralUseClasses\GeneralUseClasses.csproj", "{DF538B8B-752F-415C-BED9-5F49F8A42C5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlClasses", "XmlClasses\XmlClasses.csproj", "{CE62A9D9-41F1-4A7F-AE06-A2D063E5E2CC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{DF538B8B-752F-415C-BED9-5F49F8A42C5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF538B8B-752F-415C-BED9-5F49F8A42C5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF538B8B-752F-415C-BED9-5F49F8A42C5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE62A9D9-41F1-4A7F-AE06-A2D063E5E2CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE62A9D9-41F1-4A7F-AE06-A2D063E5E2CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE62A9D9-41F1-4A7F-AE06-A2D063E5E2CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE62A9D9-41F1-4A7F-AE06-A2D063E5E2CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
