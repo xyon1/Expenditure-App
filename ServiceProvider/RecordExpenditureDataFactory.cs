@@ -6,7 +6,7 @@ using GeneralUseClasses.Contracts;
 using GeneralUseClasses.Services;
 using XmlClasses;
 
-namespace ViewViewModelLink
+namespace ServiceProvider
 {
     public class RecordExpenditureDataFactory : IRecordExpenditureDataFactory
     {

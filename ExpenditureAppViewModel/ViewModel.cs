@@ -5,12 +5,11 @@ using System.Text;
 using System.ComponentModel;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
-using ModelViewModelLink.Services;
-using ModelViewModelLink.Contracts;
+using GeneralUseClasses.Services;
+using GeneralUseClasses.Contracts;
 using ExpenditureAppViewModel.EventArgs;
 using ExpenditureAppViewModel.Exceptions;
 using GeneralUseClasses;
-using ViewViewModelLink.Contracts;
 
 namespace ExpenditureAppViewModel
 {

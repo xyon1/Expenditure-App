@@ -14,7 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
-using ViewViewModelLink;
+using GeneralUseClasses.Services;
+using ServiceProvider;
 
 namespace ExpenditureAppWPF
 {
