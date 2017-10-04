@@ -399,16 +399,6 @@ namespace ExpenditureAppViewModel
             {
                 throw new ExceptionForUser("Missing dominant tag");
             }
-
-            if (associatedTagsForAdding.Count == 0)
-            {
-                throw new ExceptionForUser("Missing associated tag");
-            }
-
-            if (peopleForAdding.Count == 0)
-            {
-                throw new ExceptionForUser("Missing person");
-            }
         }
 
         private void OnAddDominantTag()
