@@ -52,22 +52,22 @@ namespace XmlClasses
             XmlDocument doc = new XmlDocument();
             doc.Load(xmlFilePath);
             //int ID = XmlDataExtractor.GetLatestID(xmlFilePath) + 1;
-            int ID = latestID + 1;
+            latestID = latestID + 1;
 
             foreach (XmlNode node in doc.ChildNodes)
             {
                 if (node.Name == "Expenditures")
                 {
-                    createNewEntry(doc, node, currentVersion, ID, expenditureEntry);
+                    createNewEntry(doc, node, currentVersion, expenditureEntry);
 
-                    node.ChildNodes[0].InnerText = ID.ToString();
+                    node.ChildNodes[0].InnerText = latestID.ToString();
                 }
             }
 
             doc.Save(xmlFilePath);
         }
 
-        private static void createNewEntry(XmlDocument doc, XmlNode node, string currentVersion, int ID, IExpenditureEntry entry)
+        private static void createNewEntry(XmlDocument doc, XmlNode node, string currentVersion, IExpenditureEntry entry)
         {
             XmlElement newExpenditureEntry = doc.CreateElement("ExpenditureEntry");
             XmlAttribute versionNumber = doc.CreateAttribute("version");
@@ -75,7 +75,7 @@ namespace XmlClasses
             newExpenditureEntry.Attributes.Append(versionNumber);
 
             XmlElement iDElement = doc.CreateElement("ID");
-            iDElement.InnerText = ID.ToString();
+            iDElement.InnerText = latestID.ToString();
 
             XmlElement dominantTag = doc.CreateElement("DominantTag");
             dominantTag.InnerText = entry.dominantTag;
