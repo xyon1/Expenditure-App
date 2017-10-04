@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using GeneralUseClasses.Contracts;
 using GeneralUseClasses.Services;
-
+using XmlClasses;
 
 namespace ViewViewModelLink
 {
