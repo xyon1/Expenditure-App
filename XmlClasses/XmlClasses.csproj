@@ -48,10 +48,6 @@
       <Project>{df538b8b-752f-415c-bed9-5f49f8a42c5a}</Project>
       <Name>GeneralUseClasses</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ModelViewModelLink\ModelViewModelLink.csproj">
-      <Project>{b5ba2038-2919-4a0d-830f-147b52ec4b1d}</Project>
-      <Name>ModelViewModelLink</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

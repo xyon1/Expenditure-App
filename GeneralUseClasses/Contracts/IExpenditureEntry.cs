@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GeneralUseClasses;
 
-namespace ModelViewModelLink.Contracts
+namespace GeneralUseClasses.Contracts
 {
     public interface IExpenditureEntry
     {

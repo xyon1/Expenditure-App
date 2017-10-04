@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenditureAppViewModel", "ExpenditureAppViewModel\ExpenditureAppViewModel.csproj", "{AE570863-1112-47E6-8669-BC63447AB0BF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenditureAppView_GUI", "ExpenditureAppWPFView\ExpenditureAppView_GUI.csproj", "{06BC8D97-D301-4E84-8567-17DE2A09CD79}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenditureAppModel", "ExpenditureAppModel\ExpenditureAppModel.csproj", "{A8A8C038-266C-4F52-BD6A-75EF64D10282}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelViewModelLink", "ModelViewModelLink\ModelViewModelLink.csproj", "{B5BA2038-2919-4A0D-830F-147B52EC4B1D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewViewModelLink", "ViewViewModelLink\ViewViewModelLink.csproj", "{90C06CE5-E1BE-4070-9448-5EDE2B6726DC}"
 EndProject
@@ -35,10 +33,6 @@ Global
 		{A8A8C038-266C-4F52-BD6A-75EF64D10282}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8A8C038-266C-4F52-BD6A-75EF64D10282}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8A8C038-266C-4F52-BD6A-75EF64D10282}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B5BA2038-2919-4A0D-830F-147B52EC4B1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B5BA2038-2919-4A0D-830F-147B52EC4B1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B5BA2038-2919-4A0D-830F-147B52EC4B1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B5BA2038-2919-4A0D-830F-147B52EC4B1D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{90C06CE5-E1BE-4070-9448-5EDE2B6726DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{90C06CE5-E1BE-4070-9448-5EDE2B6726DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90C06CE5-E1BE-4070-9448-5EDE2B6726DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -54,5 +48,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AAD57D1B-EAC2-4F01-9A10-539912E92439}
 	EndGlobalSection
 EndGlobal

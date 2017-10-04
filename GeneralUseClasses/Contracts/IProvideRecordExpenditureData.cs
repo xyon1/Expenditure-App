@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ModelViewModelLink.Services;
 
-namespace ViewViewModelLink.Contracts
+namespace GeneralUseClasses.Contracts
 {
     public interface IRecordExpenditureDataFactory
     {

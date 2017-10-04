@@ -5,11 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.IO;
-using GeneralUseClasses;
-using ModelViewModelLink.Services;
-using ModelViewModelLink.Contracts;
+using GeneralUseClasses.Services;
+using GeneralUseClasses.Contracts;
 
-namespace Classes
+namespace XmlClasses
 {
     public class RecordExpenditureDataXml : IRecordExpenditureData
     {
