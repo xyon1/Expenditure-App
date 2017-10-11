@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 using GeneralUseClasses.Services;
 using GeneralUseClasses.Contracts;
 using ExpenditureAppViewModel.EventArgs;
-using ExpenditureAppViewModel.Exceptions;
+using GeneralUseClasses.Exceptions;
 using GeneralUseClasses;
 
 namespace ExpenditureAppViewModel
@@ -16,6 +16,7 @@ namespace ExpenditureAppViewModel
     public class ViewModel : INotifyPropertyChanged
     {
         IRecordExpenditureData recorder;
+        IProvideExpenditureData dataProvider;
         public event PropertyChangedEventHandler PropertyChanged;
         public Action<string, string> messageForUser;
         public Func<string, string, bool> decisionForUser;
@@ -30,9 +31,9 @@ namespace ExpenditureAppViewModel
         private List<string> selectedPeopleToRemove = new List<string>();
         private List<string> selectedAssociatedTagsToRemove = new List<string>();
         private string selectedPersonToAdd;
-        private ObservableCollection<string> allDominantTags = new ObservableCollection<string>() { "Beer", "Coffee", "Food" };
-        private ObservableCollection<string> allAssociatedTags = new ObservableCollection<string>() { "Bar", "SuperMarket", "Leisure" };
-        private ObservableCollection<string> allPeople = new ObservableCollection<string>() { "Benedict", "Beth", "Paul" };
+        private ObservableCollection<string> allDominantTags;// = new ObservableCollection<string>() { "Beer", "Coffee", "Food" };
+        private ObservableCollection<string> allAssociatedTags;// = new ObservableCollection<string>() { "Bar", "SuperMarket", "Leisure" };
+        private ObservableCollection<string> allPeople;// = new ObservableCollection<string>() { "Benedict", "Beth", "Paul" };
         private string dominantTagForAdding;
         private ObservableCollection<string> associatedTagsForAdding = new ObservableCollection<string>();
         private ObservableCollection<string> peopleForAdding = new ObservableCollection<string>();
@@ -125,6 +126,14 @@ namespace ExpenditureAppViewModel
             {
                 return allDominantTags;
             }
+            set
+            {
+                if (allDominantTags != value)
+                {
+                    allDominantTags = value;
+                    RaisePropertyChanged("AllDominantTags");
+                }
+            }
         }
 
         public string SelectedAssociatedTagToAdd
@@ -149,6 +158,14 @@ namespace ExpenditureAppViewModel
             {
                 return allAssociatedTags;
             }
+            set
+            {
+                if (allAssociatedTags != value)
+                {
+                    allAssociatedTags = value;
+                    RaisePropertyChanged("AllAssociatedTags");
+                }
+            }
         }
 
         public string SelectedPersonToAdd
@@ -172,6 +189,14 @@ namespace ExpenditureAppViewModel
             get
             {
                 return allPeople;
+            }
+            set
+            {
+                if (allPeople != value)
+                {
+                    allPeople = value;
+                    RaisePropertyChanged("AllPeople");
+                }
             }
         }
 
@@ -268,9 +293,14 @@ namespace ExpenditureAppViewModel
             }
         }
 
-        public ViewModel(Action<string, string> messageForUser, Func<string, string, bool> decisionForUser, IRecordExpenditureDataFactory recorderFactory)
+        public ViewModel(Action<string, string> messageForUser, Func<string, string, bool> decisionForUser, IProvideExpenditureDataRecorder recorderFactory, IProvideExpenditureDataProvider dataProviderFactory)
         {
             recorder = recorderFactory.GetExpenditureDataRecorder();
+            dataProvider = dataProviderFactory.GetExpenditureDataProvider();
+            AllDominantTags = new ObservableCollection<string>(dataProvider.GetDominantTags());
+
+            AllAssociatedTags = dataProvider.GetAssociatedTags() as ObservableCollection<string>;
+            AllPeople = dataProvider.GetPeople() as ObservableCollection<string>;
             this.messageForUser = messageForUser;
             this.decisionForUser = decisionForUser;
         }
