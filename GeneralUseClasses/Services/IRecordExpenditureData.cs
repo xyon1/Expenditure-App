@@ -9,8 +9,6 @@ namespace GeneralUseClasses.Services
 {
     public interface IRecordExpenditureData
     {
-        //IExpenditureEntry ExpenditureData { get; set; }
-
         void RecordExpenditureData(IExpenditureEntry entry);
     }
 }
