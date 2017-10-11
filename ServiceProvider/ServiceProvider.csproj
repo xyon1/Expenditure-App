@@ -7,8 +7,8 @@
     <ProjectGuid>{21F7EE38-C71D-4835-B89A-22099AF34A0E}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ServiceProviderLibrary</RootNamespace>
-    <AssemblyName>ServiceProviderLibrary</AssemblyName>
+    <RootNamespace>ServiceProvider</RootNamespace>
+    <AssemblyName>ServiceProvider</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
