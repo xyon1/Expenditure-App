@@ -30,7 +30,7 @@ namespace ExpenditureAppWPF
             InitializeComponent();
             Action<string, string> messageForUser = ((message, caption) => System.Windows.MessageBox.Show(message, caption));
             Func<string, string, bool> decisionForUser = (message, caption) => System.Windows.MessageBox.Show(message, caption, MessageBoxButton.YesNo) == MessageBoxResult.Yes;
-            viewModel = new ExpenditureAppViewModel.ViewModel(messageForUser, decisionForUser, new RecordExpenditureDataFactory());
+            viewModel = new ExpenditureAppViewModel.ViewModel(messageForUser, decisionForUser, new ExpenditureDataRecorderFactory(), new ExpenditureDataProviderFactory());
             DataContext = viewModel;
 
             AssociatedTagsListView.SelectionChanged += (s,e) => OnAssociatedTagsListViewSelectionChanged(s,e);
