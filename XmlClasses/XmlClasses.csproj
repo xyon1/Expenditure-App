@@ -42,8 +42,13 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecordExpenditureDataXml.cs" />
+    <Compile Include="ExtractExpenditureDataXml.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ExpenditureAppModel\ExpenditureAppModel.csproj">
+      <Project>{a8a8c038-266c-4f52-bd6a-75ef64d10282}</Project>
+      <Name>ExpenditureAppModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GeneralUseClasses\GeneralUseClasses.csproj">
       <Project>{df538b8b-752f-415c-bed9-5f49f8a42c5a}</Project>
       <Name>GeneralUseClasses</Name>
