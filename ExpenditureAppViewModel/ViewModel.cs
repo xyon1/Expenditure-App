@@ -297,10 +297,10 @@ namespace ExpenditureAppViewModel
         {
             recorder = recorderFactory.GetExpenditureDataRecorder();
             dataProvider = dataProviderFactory.GetExpenditureDataProvider();
-            AllDominantTags = new ObservableCollection<string>(dataProvider.GetDominantTags());
+            allDominantTags = new ObservableCollection<string>(dataProvider.GetDominantTags());
 
-            AllAssociatedTags = dataProvider.GetAssociatedTags() as ObservableCollection<string>;
-            AllPeople = dataProvider.GetPeople() as ObservableCollection<string>;
+            allAssociatedTags = new ObservableCollection<string>(dataProvider.GetAssociatedTags());
+            allPeople = new ObservableCollection<string>(dataProvider.GetPeople());
             this.messageForUser = messageForUser;
             this.decisionForUser = decisionForUser;
         }

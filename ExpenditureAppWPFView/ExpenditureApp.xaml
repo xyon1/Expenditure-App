@@ -75,7 +75,8 @@
                         <Label Margin="0">Select Existing Dominant Tag</Label>
                         <ComboBox MinHeight="20" MinWidth="150" Grid.Row="1" Margin="5"
                                   ItemsSource="{Binding Path=AllDominantTags, UpdateSourceTrigger=PropertyChanged}"
-                                  SelectedItem="{Binding Path=SelectedDominantTagToAdd, UpdateSourceTrigger=PropertyChanged}"></ComboBox>
+                                  SelectedItem="{Binding Path=SelectedDominantTagToAdd, UpdateSourceTrigger=PropertyChanged}">
+                        </ComboBox>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="2">
                         <Grid.RowDefinitions>
@@ -85,7 +86,8 @@
                         <Label Margin="0">Select Existing Associated Tag</Label>
                         <ComboBox MinHeight="20" MinWidth="150" Grid.Row="1" Margin="5"
                                   ItemsSource="{Binding Path=AllAssociatedTags, UpdateSourceTrigger=PropertyChanged}"
-                                  SelectedItem="{Binding Path=SelectedAssociatedTagToAdd}"></ComboBox>
+                                  SelectedItem="{Binding Path=SelectedAssociatedTagToAdd, UpdateSourceTrigger=PropertyChanged}">
+                        </ComboBox>
                     </Grid>
                     <Grid Grid.Column="2" Grid.Row="2">
                         <Grid.RowDefinitions>
@@ -95,7 +97,8 @@
                         <Label Margin="0">Select Person</Label>
                         <ComboBox MinHeight="20" MinWidth="150" Grid.Row="1" Margin="5"
                                   ItemsSource="{Binding Path=AllPeople, UpdateSourceTrigger=PropertyChanged}"
-                                  SelectedItem="{Binding Path=SelectedPersonToAdd}"></ComboBox>
+                                  SelectedItem="{Binding Path=SelectedPersonToAdd, UpdateSourceTrigger=PropertyChanged}">
+                        </ComboBox>
                     </Grid>
                     <Button Name="AddDominantTagBtn" Grid.Row="3" HorizontalAlignment="Center" 
                             Command="{Binding Path=AddDominantTagCommand}">Add</Button>
