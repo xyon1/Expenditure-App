@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenditureAppViewModel", "ExpenditureAppViewModel\ExpenditureAppViewModel.csproj", "{AE570863-1112-47E6-8669-BC63447AB0BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenditureAppView_GUI", "ExpenditureAppWPFView\ExpenditureAppView_GUI.csproj", "{06BC8D97-D301-4E84-8567-17DE2A09CD79}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenditureAppView_GUI", "ExpenditureAppWPFView\ExpenditureAppView.csproj", "{06BC8D97-D301-4E84-8567-17DE2A09CD79}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenditureAppModel", "ExpenditureAppModel\ExpenditureAppModel.csproj", "{A8A8C038-266C-4F52-BD6A-75EF64D10282}"
 EndProject
@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneralUseClasses", "Genera
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlClasses", "XmlClasses\XmlClasses.csproj", "{CE62A9D9-41F1-4A7F-AE06-A2D063E5E2CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceProvider", "ServiceProviderLibrary\ServiceProvider.csproj", "{21F7EE38-C71D-4835-B89A-22099AF34A0E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceProvider", "ServiceProvider\ServiceProvider.csproj", "{21F7EE38-C71D-4835-B89A-22099AF34A0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
