@@ -7,7 +7,7 @@ using GeneralUseClasses.Services;
 
 namespace GeneralUseClasses.Contracts
 {
-    public interface IRecordExpenditureDataFactory
+    public interface IProvideExpenditureDataRecorder
     {
         IRecordExpenditureData GetExpenditureDataRecorder();
     }
