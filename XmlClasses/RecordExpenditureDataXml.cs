@@ -13,7 +13,12 @@ namespace XmlClasses
     public class RecordExpenditureDataXml : IRecordExpenditureData
     {
         private string xmlFilePath = Directory.GetCurrentDirectory() + @"\Expenditure.xml";
-        private static int latestID = 0;
+        private static int latestID;
+
+        public RecordExpenditureDataXml()
+        {
+            latestID = ExtractExpenditureDataXml.GetLatestID(xmlFilePath);
+        }
 
         public void RecordExpenditureData(IExpenditureEntry expenditureEntry)
         {
@@ -51,14 +56,13 @@ namespace XmlClasses
             string currentVersion = "1"; //Change when change xml!
             XmlDocument doc = new XmlDocument();
             doc.Load(xmlFilePath);
-            //int ID = XmlDataExtractor.GetLatestID(xmlFilePath) + 1;
             latestID = latestID + 1;
 
             foreach (XmlNode node in doc.ChildNodes)
             {
                 if (node.Name == "Expenditures")
                 {
-                    createNewEntry(doc, node, currentVersion, expenditureEntry);
+                    CreateNewEntry(doc, node, currentVersion, expenditureEntry);
 
                     node.ChildNodes[0].InnerText = latestID.ToString();
                 }
@@ -67,7 +71,7 @@ namespace XmlClasses
             doc.Save(xmlFilePath);
         }
 
-        private static void createNewEntry(XmlDocument doc, XmlNode node, string currentVersion, IExpenditureEntry entry)
+        private static void CreateNewEntry(XmlDocument doc, XmlNode node, string currentVersion, IExpenditureEntry entry)
         {
             XmlElement newExpenditureEntry = doc.CreateElement("ExpenditureEntry");
             XmlAttribute versionNumber = doc.CreateAttribute("version");
