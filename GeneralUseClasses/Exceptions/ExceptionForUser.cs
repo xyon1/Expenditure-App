@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExpenditureAppViewModel.Exceptions
+namespace GeneralUseClasses.Exceptions
 {
     public class ExceptionForUser : Exception
     {
