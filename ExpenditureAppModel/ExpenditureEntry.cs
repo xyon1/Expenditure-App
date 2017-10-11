@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using GeneralUseClasses;
+using GeneralUseClasses.Contracts;
 
 namespace ExpenditureAppModel
 {
-    public class ExpenditureEntry : IComparable<ExpenditureEntry>
+    public class ExpenditureEntry : IExpenditureEntry, IComparable<ExpenditureEntry>
     {
-        internal bool budgetItem;
-        internal string dominantTag;
-        internal List<string> associatedTags;
-        internal List<string> people;
-        internal double expenditure;
-        internal ExpenditureDate date;
+        public bool budgetItem;
+        public string dominantTag { get; set; }
+        public List<string> associatedTags { get; set; }
+        public List<string> people { get; set; }
+        public double expenditure { get; set; }
+        public ExpenditureDate date { get; set; }
 
         public ExpenditureEntry()
         {
