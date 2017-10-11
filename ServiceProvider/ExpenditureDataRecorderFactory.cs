@@ -8,11 +8,11 @@ using XmlClasses;
 
 namespace ServiceProvider
 {
-    public class RecordExpenditureDataFactory : IRecordExpenditureDataFactory
+    public class ExpenditureDataRecorderFactory : IProvideExpenditureDataRecorder
     {
         private IRecordExpenditureData recorder;
 
-        public RecordExpenditureDataFactory()
+        public ExpenditureDataRecorderFactory()
         {
             recorder = new RecordExpenditureDataXml();
         }
