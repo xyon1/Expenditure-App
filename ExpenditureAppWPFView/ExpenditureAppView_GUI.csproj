@@ -112,10 +112,6 @@
       <Project>{df538b8b-752f-415c-bed9-5f49f8a42c5a}</Project>
       <Name>GeneralUseClasses</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ServiceProvider\ServiceProvider.csproj">
-      <Project>{58d5d93a-8dfb-42e4-b56a-c615b1169052}</Project>
-      <Name>ServiceProvider</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
