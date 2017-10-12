@@ -31,9 +31,9 @@ namespace ExpenditureAppViewModel
         private List<string> selectedPeopleToRemove = new List<string>();
         private List<string> selectedAssociatedTagsToRemove = new List<string>();
         private string selectedPersonToAdd;
-        private ObservableCollection<string> allDominantTags;// = new ObservableCollection<string>() { "Beer", "Coffee", "Food" };
-        private ObservableCollection<string> allAssociatedTags;// = new ObservableCollection<string>() { "Bar", "SuperMarket", "Leisure" };
-        private ObservableCollection<string> allPeople;// = new ObservableCollection<string>() { "Benedict", "Beth", "Paul" };
+        private ObservableCollection<string> allDominantTags;
+        private ObservableCollection<string> allAssociatedTags;
+        private ObservableCollection<string> allPeople;
         private string dominantTagForAdding;
         private ObservableCollection<string> associatedTagsForAdding = new ObservableCollection<string>();
         private ObservableCollection<string> peopleForAdding = new ObservableCollection<string>();
