@@ -80,7 +80,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="InputPage.xaml">
+    <Page Include="InputUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="OutputUserControl1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -89,8 +93,11 @@
     <Compile Include="Dialogs\PopupTextInput.xaml.cs">
       <DependentUpon>PopupTextInput.xaml</DependentUpon>
     </Compile>
-    <Compile Include="InputPage.xaml.cs">
-      <DependentUpon>InputPage.xaml</DependentUpon>
+    <Compile Include="InputUserControl.xaml.cs">
+      <DependentUpon>InputUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="OutputUserControl1.xaml.cs">
+      <DependentUpon>OutputUserControl1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

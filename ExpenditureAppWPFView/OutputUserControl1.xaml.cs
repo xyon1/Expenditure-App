@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace ExpenditureAppWPF
 {
     /// <summary>
-    /// Interaction logic for InputPage.xaml
+    /// Interaction logic for OutputUserControl1.xaml
     /// </summary>
-    public partial class InputPage : Page
+    public partial class OutputUserControl1 : UserControl
     {
-        public InputPage()
+        public OutputUserControl1()
         {
             InitializeComponent();
         }
