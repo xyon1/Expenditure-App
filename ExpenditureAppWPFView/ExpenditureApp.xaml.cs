@@ -16,6 +16,7 @@ using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 using GeneralUseClasses.Services;
 using ServiceProvider;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace ExpenditureAppWPF
 {
@@ -30,7 +31,8 @@ namespace ExpenditureAppWPF
             InitializeComponent();
             Action<string, string> messageForUser = ((message, caption) => System.Windows.MessageBox.Show(message, caption));
             Func<string, string, bool> decisionForUser = (message, caption) => System.Windows.MessageBox.Show(message, caption, MessageBoxButton.YesNo) == MessageBoxResult.Yes;
-            viewModel = new ExpenditureAppViewModel.ViewModel(messageForUser, decisionForUser, new ExpenditureDataRecorderFactory(), new ExpenditureDataProviderFactory());
+            Func<string> selectFileLocation = () => OpenFolderSelecterDialog(true);
+            viewModel = new ExpenditureAppViewModel.ViewModel(messageForUser, decisionForUser, new ExpenditureDataRecorderFactory(selectFileLocation), new ExpenditureDataProviderFactory(selectFileLocation));
             DataContext = viewModel;
 
             AssociatedTagsListView.SelectionChanged += (s,e) => OnAssociatedTagsListViewSelectionChanged(s,e);
@@ -141,6 +143,39 @@ namespace ExpenditureAppWPF
         private void OnViewModelException(Exception e)
         {
             MessageBox.Show(e.Message, "Warning!");
+        }
+
+        private string OpenFolderSelecterDialog(bool failureIsTerminal)
+        {
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.InitialDirectory = "C:";
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                if (string.IsNullOrEmpty(dialog.FileName))
+                {
+                    DialogFail(failureIsTerminal);
+                }
+            }
+            else
+            {
+                DialogFail(failureIsTerminal);
+            }
+
+            return dialog.FileName;
+        }
+
+        private void DialogFail(bool failureIsTerminal)
+        {
+            if (failureIsTerminal)
+            {
+                MessageBox.Show("You have not selected a path! Application will now close.", "Warning!");
+                Environment.Exit(0);
+            }
+            else
+            {
+                MessageBox.Show("You have not selected a path!", "Warning!");
+            }
         }
     }
 }
