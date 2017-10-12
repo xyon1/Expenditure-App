@@ -17,6 +17,7 @@ using System.Windows.Automation.Provider;
 using GeneralUseClasses.Services;
 using ServiceProvider;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using ExpenditureAppWPF.Dialogs;
 
 namespace ExpenditureAppWPF
 {

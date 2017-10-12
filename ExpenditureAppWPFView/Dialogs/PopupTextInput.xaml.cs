@@ -13,8 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
+using ExpenditureAppWPF;
 
-namespace ExpenditureAppWPF
+namespace ExpenditureAppWPF.Dialogs
 {
     /// <summary>
     /// Interaction logic for PopupTextInput.xaml
