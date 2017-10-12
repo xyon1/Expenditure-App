@@ -14,7 +14,12 @@ namespace XmlClasses
 {
     public class ExtractExpenditureDataXml : IProvideExpenditureData
     {
-        private string xmlFilePath = Directory.GetCurrentDirectory() + @"\Expenditure.xml";
+        private string xmlFilePath;
+
+        public ExtractExpenditureDataXml(string xmlFilePath)
+        {
+            this.xmlFilePath = xmlFilePath;
+        }
 
         /// <summary>
         /// extracts expenditures from xml file found at xmlFilePath based on format of an entryTemplate. There are 6 extraction

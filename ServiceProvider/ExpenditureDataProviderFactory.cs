@@ -12,9 +12,9 @@ namespace ServiceProvider
     {
         private IProvideExpenditureData recorder;
 
-        public ExpenditureDataProviderFactory()
+        public ExpenditureDataProviderFactory(Func<string> getXmlFilePath)
         {
-            recorder = new ExtractExpenditureDataXml();
+            recorder = new ExtractExpenditureDataXml(getXmlFilePath.Invoke());
         }
 
         public IProvideExpenditureData GetExpenditureDataProvider()
