@@ -32,7 +32,7 @@ namespace ExpenditureAppWPF
             Action<string, string> messageForUser = ((message, caption) => System.Windows.MessageBox.Show(message, caption));
             Func<string, string, bool> decisionForUser = (message, caption) => System.Windows.MessageBox.Show(message, caption, MessageBoxButton.YesNo) == MessageBoxResult.Yes;
             Func<string> selectFileLocation = () => OpenFolderSelecterDialog(true);
-            viewModel = new ExpenditureAppViewModel.ViewModel(messageForUser, decisionForUser, new ExpenditureDataRecorderFactory(selectFileLocation), new ExpenditureDataProviderFactory(selectFileLocation));
+            viewModel = new ExpenditureAppViewModel.ViewModel(messageForUser, decisionForUser, new ExpenditureDataRecorderFactory(selectFileLocation, messageForUser), new ExpenditureDataProviderFactory(selectFileLocation, messageForUser));
             DataContext = viewModel;
 
             AssociatedTagsListView.SelectionChanged += (s,e) => OnAssociatedTagsListViewSelectionChanged(s,e);
@@ -147,7 +147,7 @@ namespace ExpenditureAppWPF
 
         private string OpenFolderSelecterDialog(bool failureIsTerminal)
         {
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog("Please select a folder to store your expenditure in");
             dialog.InitialDirectory = "C:";
             dialog.IsFolderPicker = true;
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
