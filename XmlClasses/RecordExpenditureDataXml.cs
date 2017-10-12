@@ -12,12 +12,12 @@ namespace XmlClasses
 {
     public class RecordExpenditureDataXml : IRecordExpenditureData
     {
-        private string xmlFilePath = Directory.GetCurrentDirectory() + @"\Expenditure.xml";
         private static int latestID;
+        private string xmlFilePath;
 
-        public RecordExpenditureDataXml()
+        public RecordExpenditureDataXml(string xmlFilePath)
         {
-            latestID = ExtractExpenditureDataXml.GetLatestID(xmlFilePath);
+            this.xmlFilePath = xmlFilePath;
         }
 
         public void RecordExpenditureData(IExpenditureEntry expenditureEntry)
