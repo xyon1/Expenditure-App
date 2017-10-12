@@ -13,7 +13,7 @@ using GeneralUseClasses;
 
 namespace ExpenditureAppViewModel
 {
-    public class ViewModel : INotifyPropertyChanged
+    public class InputUserControlViewModel : INotifyPropertyChanged
     {
         IRecordExpenditureData recorder;
         IProvideExpenditureData dataProvider;
@@ -31,9 +31,9 @@ namespace ExpenditureAppViewModel
         private List<string> selectedPeopleToRemove = new List<string>();
         private List<string> selectedAssociatedTagsToRemove = new List<string>();
         private string selectedPersonToAdd;
-        private ObservableCollection<string> allDominantTags;// = new ObservableCollection<string>() { "Beer", "Coffee", "Food" };
-        private ObservableCollection<string> allAssociatedTags;// = new ObservableCollection<string>() { "Bar", "SuperMarket", "Leisure" };
-        private ObservableCollection<string> allPeople;// = new ObservableCollection<string>() { "Benedict", "Beth", "Paul" };
+        private ObservableCollection<string> allDominantTags;
+        private ObservableCollection<string> allAssociatedTags;
+        private ObservableCollection<string> allPeople;
         private string dominantTagForAdding;
         private ObservableCollection<string> associatedTagsForAdding = new ObservableCollection<string>();
         private ObservableCollection<string> peopleForAdding = new ObservableCollection<string>();
@@ -293,7 +293,7 @@ namespace ExpenditureAppViewModel
             }
         }
 
-        public ViewModel(Action<string, string> messageForUser, Func<string, string, bool> decisionForUser, IProvideExpenditureDataRecorder recorderFactory, IProvideExpenditureDataProvider dataProviderFactory)
+        public InputUserControlViewModel(Action<string, string> messageForUser, Func<string, string, bool> decisionForUser, IProvideExpenditureDataRecorder recorderFactory, IProvideExpenditureDataProvider dataProviderFactory)
         {
             recorder = recorderFactory.GetExpenditureDataRecorder();
             dataProvider = dataProviderFactory.GetExpenditureDataProvider();

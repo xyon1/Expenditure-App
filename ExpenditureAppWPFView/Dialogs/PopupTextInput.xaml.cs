@@ -13,8 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
+using ExpenditureAppWPF;
 
-namespace ExpenditureAppWPF
+namespace ExpenditureAppWPF.Dialogs
 {
     /// <summary>
     /// Interaction logic for PopupTextInput.xaml
@@ -22,8 +23,8 @@ namespace ExpenditureAppWPF
     public partial class PopupTextInput : Window
     {
         string instruction;
-        ExpenditureAppViewModel.ViewModel viewModel;
-        public PopupTextInput(ExpenditureAppViewModel.ViewModel viewModel, string title, string tagType, ICommand addCommand)
+        ExpenditureAppViewModel.InputUserControlViewModel viewModel;
+        public PopupTextInput(ExpenditureAppViewModel.InputUserControlViewModel viewModel, string title, string tagType, ICommand addCommand)
         {
             InitializeComponent();
             this.viewModel = viewModel;
