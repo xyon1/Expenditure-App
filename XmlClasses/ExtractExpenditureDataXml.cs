@@ -18,7 +18,7 @@ namespace XmlClasses
 
         public ExtractExpenditureDataXml(string xmlFilePath)
         {
-            this.xmlFilePath = xmlFilePath;
+            this.xmlFilePath = xmlFilePath + @"/Expenditure.xml";
         }
 
         /// <summary>

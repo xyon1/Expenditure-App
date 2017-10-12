@@ -17,7 +17,7 @@ namespace XmlClasses
 
         public RecordExpenditureDataXml(string xmlFilePath)
         {
-            this.xmlFilePath = xmlFilePath;
+            this.xmlFilePath = xmlFilePath + @"/Expenditure.xml";
         }
 
         public void RecordExpenditureData(IExpenditureEntry expenditureEntry)
