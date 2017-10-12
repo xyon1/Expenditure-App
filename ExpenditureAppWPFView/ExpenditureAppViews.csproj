@@ -112,9 +112,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ExpenditureAppViewModel\ExpenditureAppViewModel.csproj">
+    <ProjectReference Include="..\ExpenditureAppViewModel\ExpenditureAppViewModels.csproj">
       <Project>{ae570863-1112-47e6-8669-bc63447ab0bf}</Project>
-      <Name>ExpenditureAppViewModel</Name>
+      <Name>ExpenditureAppViewModels</Name>
     </ProjectReference>
     <ProjectReference Include="..\GeneralUseClasses\GeneralUseClasses.csproj">
       <Project>{df538b8b-752f-415c-bed9-5f49f8a42c5a}</Project>

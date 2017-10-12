@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenditureAppViewModel", "ExpenditureAppViewModel\ExpenditureAppViewModel.csproj", "{AE570863-1112-47E6-8669-BC63447AB0BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenditureAppViewModels", "ExpenditureAppViewModel\ExpenditureAppViewModels.csproj", "{AE570863-1112-47E6-8669-BC63447AB0BF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExpenditureAppViews", "ExpenditureAppWPFView\ExpenditureAppViews.csproj", "{06BC8D97-D301-4E84-8567-17DE2A09CD79}"
 EndProject
