@@ -68,13 +68,13 @@
       <DependentUpon>ExpenditureApp.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="PopupTextInput.xaml">
+    <Page Include="Dialogs\PopupTextInput.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PopupTextInput.xaml.cs">
+    <Compile Include="Dialogs\PopupTextInput.xaml.cs">
       <DependentUpon>PopupTextInput.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
