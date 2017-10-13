@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ServiceProvider
+namespace GeneralUseClasses
 {
     public static class SettingsManager
     {
-        internal static void CheckForXmlFileDirectory(Func<string> getXmlFilePath, Action<string, string> messageForUser)
+        public static void CheckForXmlFileDirectory(Func<string> getXmlFilePath, Action<string, string> messageForUser)
         {
             if (string.IsNullOrEmpty(DataStorage.Default.xmlFileDirectory))
             {

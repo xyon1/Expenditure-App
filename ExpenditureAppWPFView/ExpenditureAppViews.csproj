@@ -9,11 +9,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ExpenditureAppWPF</RootNamespace>
     <AssemblyName>ExpenditureAppWPF</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -135,12 +136,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ExpenditureAppViewModel\ExpenditureAppViewModels.csproj">
-      <Project>{ae570863-1112-47e6-8669-bc63447ab0bf}</Project>
+    <ProjectReference Include="..\ExpenditureAppViewModels\ExpenditureAppViewModels.csproj">
+      <Project>{89aca165-35ae-4ce7-9616-0070d0a0ac48}</Project>
       <Name>ExpenditureAppViewModels</Name>
     </ProjectReference>
     <ProjectReference Include="..\GeneralUseClasses\GeneralUseClasses.csproj">
-      <Project>{df538b8b-752f-415c-bed9-5f49f8a42c5a}</Project>
+      <Project>{17bd8b92-abb9-4daa-8939-9f02e87997df}</Project>
       <Name>GeneralUseClasses</Name>
     </ProjectReference>
     <ProjectReference Include="..\ServiceProvider\ServiceProvider.csproj">

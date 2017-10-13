@@ -46,11 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExpenditureAppModel\ExpenditureAppModel.csproj">
-      <Project>{a8a8c038-266c-4f52-bd6a-75ef64d10282}</Project>
+      <Project>{8def4434-5915-412a-bf7e-5e5c20b5ab22}</Project>
       <Name>ExpenditureAppModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\GeneralUseClasses\GeneralUseClasses.csproj">
-      <Project>{df538b8b-752f-415c-bed9-5f49f8a42c5a}</Project>
+      <Project>{17bd8b92-abb9-4daa-8939-9f02e87997df}</Project>
       <Name>GeneralUseClasses</Name>
     </ProjectReference>
   </ItemGroup>

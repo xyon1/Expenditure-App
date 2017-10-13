@@ -30,7 +30,7 @@ namespace ExpenditureAppWPF.Dialogs
             closeApplicationBtn.Click += (s, e) => OnCloseApplicationClicked();
         }
 
-        public FolderSelectionDecisionDialogResult Show()
+        public new FolderSelectionDecisionDialogResult Show()
         {
             ShowDialog();
             

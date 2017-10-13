@@ -61,7 +61,6 @@ namespace ExpenditureAppWPF
                 Environment.Exit(0);
             }
 
-            MessageBox.Show(result);
             return result;
         }
 
