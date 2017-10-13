@@ -12,9 +12,14 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Menu>
 
-        </Menu>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Options">
+                    <MenuItem Header="Data File Path" Name="DataFilePathOptionBtn" Click="OnDataFilePathOptionBtnClick"></MenuItem>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
         <TabControl Margin="0,0,0,0" Grid.Row="1">
             <TabItem Header="Input">
                 <local:InputUserControl x:Name="inputUserControl"></local:InputUserControl>

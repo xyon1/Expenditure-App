@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 using GeneralUseClasses.Services;
+using GeneralUseClasses;
 using ServiceProvider;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using ExpenditureAppWPF.Dialogs;
@@ -75,13 +76,13 @@ namespace ExpenditureAppWPF
                 {
                     DialogFail(failureIsTerminal);
                 }
+                return dialog.FileName;
             }
             else
             {
                 DialogFail(failureIsTerminal);
+                return DataStorage.Default.xmlFileDirectory;
             }
-
-            return dialog.FileName;
         }
 
         private void DialogFail(bool failureIsTerminal)
@@ -93,7 +94,16 @@ namespace ExpenditureAppWPF
             }
             else
             {
-                MessageBox.Show("You have not selected a path!", "Warning!");
+                MessageBox.Show("You have not selected a path! The path will not be changed.", "Warning!");
+            }
+        }
+
+        private void OnDataFilePathOptionBtnClick(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show("You are currently storing data in " + DataStorage.Default.xmlFileDirectory + ". Would you like to change this?", "Data Directory", MessageBoxButton.YesNo);
+            if (result == MessageBoxResult.Yes)
+            {
+                DataStorage.Default.xmlFileDirectory = OpenFolderSelecterDialog(false);
             }
         }
     }
