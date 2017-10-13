@@ -12,7 +12,6 @@ namespace ServiceProvider
         {
             if (string.IsNullOrEmpty(DataStorage.Default.xmlFileDirectory))
             {
-                messageForUser.Invoke("Please press OK and choose a folder to store your expenditure in", "Setup");
                 DataStorage.Default.xmlFileDirectory = getXmlFilePath.Invoke();
                 DataStorage.Default.Save();
             }
