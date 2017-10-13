@@ -17,7 +17,7 @@
         </Menu>
         <TabControl Margin="0,0,0,0" Grid.Row="1">
             <TabItem Header="Input">
-                <local:InputUserControl></local:InputUserControl>
+                <local:InputUserControl x:Name="inputUserControl"></local:InputUserControl>
             </TabItem>
             <TabItem Header="Output">
                 <local:OutputUserControl1></local:OutputUserControl1>

@@ -64,6 +64,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Dialogs\FolderSelectionDecisionDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ExpenditureApp.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -72,6 +76,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Dialogs\FolderSelectionDecisionDialog.xaml.cs">
+      <DependentUpon>FolderSelectionDecisionDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\FolderSelectionDecisionDialogResult.cs" />
     <Compile Include="ExpenditureApp.xaml.cs">
       <DependentUpon>ExpenditureApp.xaml</DependentUpon>
       <SubType>Code</SubType>

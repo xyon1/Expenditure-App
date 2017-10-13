@@ -16,8 +16,8 @@ using ServiceProvider;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using ExpenditureAppWPF.Dialogs;
 using ExpenditureAppViewModel;
-using ExpenditureAppViewModel.EventArgs;
 using System;
+using GeneralUseClasses.EventArgs;
 
 namespace ExpenditureAppWPF
 {
@@ -31,14 +31,6 @@ namespace ExpenditureAppWPF
         {
             InitializeComponent();
 
-            Action<string, string> messageForUser = ((message, caption) => System.Windows.MessageBox.Show(message, caption));
-            Func<string, string, bool> decisionForUser = (message, caption) => System.Windows.MessageBox.Show(message, caption, MessageBoxButton.YesNo) == MessageBoxResult.Yes;
-            Func<string> selectFileLocation = () => OpenFolderSelecterDialog(true);
-            var dataRecorderFactory = new ExpenditureDataRecorderFactory(selectFileLocation, messageForUser);
-            var dataProviderFactory = new ExpenditureDataProviderFactory(selectFileLocation, messageForUser);
-            viewModel = new ExpenditureAppViewModel.InputUserControlViewModel(messageForUser, decisionForUser, dataRecorderFactory, dataProviderFactory);
-            DataContext = viewModel;
-
             AssociatedTagsListView.SelectionChanged += (s, e) => OnAssociatedTagsListViewSelectionChanged(s, e);
             PeopleListView.SelectionChanged += (s, e) => OnPeopleListViewSelectionChanged(s, e);
 
@@ -50,8 +42,13 @@ namespace ExpenditureAppWPF
             InputMonthTextBox.KeyUp += (s, e) => OnInputDateTextBoxKeyUp(s);
             InputYearTextBox.KeyUp += (s, e) => OnInputDateTextBoxKeyUp(s);
             InputExpenditureTextBox.KeyUp += (s, e) => OnInputExpenditureTextBoxKeyUp(e);
+        }
 
-            viewModel.exceptionEventHandler += (s, e) => OnViewModelException(e.exception);
+        internal void SetViewModel(InputUserControlViewModel viewModel)
+        {
+            this.viewModel = viewModel;
+            this.viewModel.exceptionEventHandler += (s, e) => OnViewModelException(e.exception);
+            DataContext = this.viewModel;
         }
 
         private void OnAssociatedTagsListViewSelectionChanged(object sender, SelectionChangedEventArgs args)
@@ -147,39 +144,6 @@ namespace ExpenditureAppWPF
         private void OnViewModelException(Exception e)
         {
             MessageBox.Show(e.Message, "Warning!");
-        }
-
-        private string OpenFolderSelecterDialog(bool failureIsTerminal)
-        {
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog("Please select a folder to store your expenditure in");
-            dialog.InitialDirectory = "C:";
-            dialog.IsFolderPicker = true;
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
-            {
-                if (string.IsNullOrEmpty(dialog.FileName))
-                {
-                    DialogFail(failureIsTerminal);
-                }
-            }
-            else
-            {
-                DialogFail(failureIsTerminal);
-            }
-
-            return dialog.FileName;
-        }
-
-        private void DialogFail(bool failureIsTerminal)
-        {
-            if (failureIsTerminal)
-            {
-                MessageBox.Show("You have not selected a path! Application will now close.", "Warning!");
-                Environment.Exit(0);
-            }
-            else
-            {
-                MessageBox.Show("You have not selected a path!", "Warning!");
-            }
         }
     }
 }
