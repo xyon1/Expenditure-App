@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="ExpenditureAppWPF.OutputUserControlPie"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ExpenditureAppWPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="885">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <ComboBox Grid.Column="0" Grid.Row="0" Margin="5,5,5,5" MinWidth="200" Name="dateModeSelectionCombo"
+                      ItemsSource="{Binding Path=DateOptions}"
+                      SelectedItem="{Binding Path=DateOption}"></ComboBox>
+            <Button MinWidth="40" Margin="5,5,0,5">GeneratePieChart</Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+            <StackPanel Margin="0,0,5,0">
+                <Label>Start Date</Label>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Margin="5" MinWidth="20" Text="{Binding StartDay}"></TextBox>
+                    <TextBox Margin="5" MinWidth="20" Text="{Binding StartMonth}"></TextBox>
+                    <TextBox Margin="5" MinWidth="20" Text="{Binding StartYear}"></TextBox>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Margin="5,0,0,0">
+                <Label>End Date</Label>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Margin="5" MinWidth="20" Text="{Binding EndDay}"></TextBox>
+                    <TextBox Margin="5" MinWidth="20" Text="{Binding EndMonth}"></TextBox>
+                    <TextBox Margin="5" MinWidth="20" Text="{Binding EndYear}"></TextBox>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <Button Grid.Column="1" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5">
+            Reset Fields
+        </Button>
+    </Grid>
+</UserControl>
