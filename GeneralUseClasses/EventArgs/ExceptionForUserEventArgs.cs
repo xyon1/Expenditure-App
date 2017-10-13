@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GeneralUseClasses.Exceptions;
 
-namespace ExpenditureAppViewModel.EventArgs
+namespace GeneralUseClasses.EventArgs
 {
     public class ExceptionForUserEventArgs : System.EventArgs
     {

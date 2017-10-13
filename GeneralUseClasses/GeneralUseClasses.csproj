@@ -40,6 +40,8 @@
     <Compile Include="Contracts\IExpenditureEntry.cs" />
     <Compile Include="Contracts\IProvideExpenditureDataProvider.cs" />
     <Compile Include="Contracts\IProvideExpenditureDataRecorder.cs" />
+    <Compile Include="EventArgs\ExceptionForUserEventArgs.cs" />
+    <Compile Include="EventArgs\StringEventArgs.cs" />
     <Compile Include="Exceptions\ExceptionForUser.cs" />
     <Compile Include="ExpenditureDate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

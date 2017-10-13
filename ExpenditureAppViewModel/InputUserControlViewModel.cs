@@ -7,7 +7,7 @@ using System.Windows.Input;
 using System.Collections.ObjectModel;
 using GeneralUseClasses.Services;
 using GeneralUseClasses.Contracts;
-using ExpenditureAppViewModel.EventArgs;
+using GeneralUseClasses.EventArgs;
 using GeneralUseClasses.Exceptions;
 using GeneralUseClasses;
 
