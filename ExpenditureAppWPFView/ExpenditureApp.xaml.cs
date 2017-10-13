@@ -27,7 +27,7 @@ namespace ExpenditureAppWPF
     /// </summary>
     public partial class ExpenditureApp : Window
     {
-        private ExpenditureAppViewModel.ExpenditureAppInputViewModel inputViewModel;
+        private ExpenditureAppViewModels.ExpenditureAppInputViewModel inputViewModel;
         public ExpenditureApp()
         {
             InitializeComponent();
@@ -37,12 +37,26 @@ namespace ExpenditureAppWPF
             Func<string> selectFileLocation = () => SelectFileLocation();
             var dataRecorderFactory = new ExpenditureDataRecorderFactory(selectFileLocation, messageForUser);
             var dataProviderFactory = new ExpenditureDataProviderFactory(selectFileLocation, messageForUser);
-            inputViewModel = new ExpenditureAppViewModel.ExpenditureAppInputViewModel(messageForUser, decisionForUser, dataRecorderFactory, dataProviderFactory);
-            inputViewModel = new ExpenditureAppViewModel.ExpenditureAppInputViewModel(messageForUser, decisionForUser, dataRecorderFactory, dataProviderFactory);
+            inputViewModel = new ExpenditureAppViewModels.ExpenditureAppInputViewModel(messageForUser, decisionForUser, dataRecorderFactory, dataProviderFactory);
+            inputViewModel = new ExpenditureAppViewModels.ExpenditureAppInputViewModel(messageForUser, decisionForUser, dataRecorderFactory, dataProviderFactory);
             inputUserControl.DataContext = inputViewModel;
             //DataContext = viewModel;
 
+            SetupInputUserControlDelegates();
 
+            outputModeCombo.MouseEnter += (s, e) => OnOutputModeChanged();
+
+            inputViewModel.exceptionEventHandler += (s, e) => OnViewModelException(e.exception);
+        }
+
+        private void OnOutputModeChanged()
+        {
+            outputControl.Content = null;
+            outputControl.Content = new OutputUserControlPie();
+        }
+
+        private void SetupInputUserControlDelegates()
+        {
             inputUserControl.AssociatedTagsListView.SelectionChanged += (s, e) => OnAssociatedTagsListViewSelectionChanged(s, e);
             inputUserControl.PeopleListView.SelectionChanged += (s, e) => OnPeopleListViewSelectionChanged(s, e);
 
@@ -54,8 +68,6 @@ namespace ExpenditureAppWPF
             inputUserControl.InputMonthTextBox.KeyUp += (s, e) => OnInputDateTextBoxKeyUp(s);
             inputUserControl.InputYearTextBox.KeyUp += (s, e) => OnInputDateTextBoxKeyUp(s);
             inputUserControl.InputExpenditureTextBox.KeyUp += (s, e) => OnInputExpenditureTextBoxKeyUp(e);
-
-            inputViewModel.exceptionEventHandler += (s, e) => OnViewModelException(e.exception);
         }
 
         private void OnAssociatedTagsListViewSelectionChanged(object sender, SelectionChangedEventArgs args)

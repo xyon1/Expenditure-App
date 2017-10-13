@@ -23,8 +23,8 @@ namespace ExpenditureAppWPF.Dialogs
     public partial class PopupTextInput : Window
     {
         string instruction;
-        ExpenditureAppViewModel.ExpenditureAppInputViewModel viewModel;
-        public PopupTextInput(ExpenditureAppViewModel.ExpenditureAppInputViewModel viewModel, string title, string tagType, ICommand addCommand)
+        ExpenditureAppViewModels.ExpenditureAppInputViewModel viewModel;
+        public PopupTextInput(ExpenditureAppViewModels.ExpenditureAppInputViewModel viewModel, string title, string tagType, ICommand addCommand)
         {
             InitializeComponent();
             this.viewModel = viewModel;

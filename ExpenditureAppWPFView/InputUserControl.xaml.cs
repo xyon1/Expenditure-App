@@ -15,7 +15,7 @@ using GeneralUseClasses.Services;
 using ServiceProvider;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using ExpenditureAppWPF.Dialogs;
-using ExpenditureAppViewModel;
+using ExpenditureAppViewModels;
 using System;
 using GeneralUseClasses.EventArgs;
 
@@ -26,7 +26,7 @@ namespace ExpenditureAppWPF
     /// </summary>
     public partial class InputUserControl : UserControl
     {
-        internal ExpenditureAppViewModel.ExpenditureAppInputViewModel viewModel;
+        internal ExpenditureAppViewModels.ExpenditureAppInputViewModel viewModel;
         public InputUserControl()
         {
             InitializeComponent();

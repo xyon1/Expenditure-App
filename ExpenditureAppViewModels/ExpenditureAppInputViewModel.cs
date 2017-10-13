@@ -11,7 +11,7 @@ using GeneralUseClasses.EventArgs;
 using GeneralUseClasses.Exceptions;
 using GeneralUseClasses;
 
-namespace ExpenditureAppViewModel
+namespace ExpenditureAppViewModels
 {
     public class ExpenditureAppInputViewModel : INotifyPropertyChanged
     {

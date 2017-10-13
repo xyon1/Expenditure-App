@@ -24,7 +24,12 @@
                 <local:InputUserControl x:Name="inputUserControl"></local:InputUserControl>
             </TabItem>
             <TabItem Header="Output">
-                <local:OutputUserControl1></local:OutputUserControl1>
+                <DockPanel>
+                    <ComboBox DockPanel.Dock="Top" Name="outputModeCombo"></ComboBox>
+                    <ContentControl Name="outputControl">
+                        <local:OutputUserControl1 DockPanel.Dock="Bottom"></local:OutputUserControl1>
+                    </ContentControl>
+                </DockPanel>
             </TabItem>
         </TabControl>
     </Grid>

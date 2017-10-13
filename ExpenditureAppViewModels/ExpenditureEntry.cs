@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using GeneralUseClasses.Contracts;
 using GeneralUseClasses;
 
-namespace ExpenditureAppViewModel
+namespace ExpenditureAppViewModels
 {
     public class ExpenditureEntry : IExpenditureEntry
     {
