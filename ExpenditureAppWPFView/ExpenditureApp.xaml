@@ -12,7 +12,6 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="Options">

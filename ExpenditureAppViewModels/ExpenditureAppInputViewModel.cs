@@ -13,7 +13,7 @@ using GeneralUseClasses;
 
 namespace ExpenditureAppViewModel
 {
-    public class InputUserControlViewModel : INotifyPropertyChanged
+    public class ExpenditureAppInputViewModel : INotifyPropertyChanged
     {
         IRecordExpenditureData recorder;
         IProvideExpenditureData dataProvider;
@@ -293,7 +293,7 @@ namespace ExpenditureAppViewModel
             }
         }
 
-        public InputUserControlViewModel(Action<string, string> messageForUser, Func<string, string, bool> decisionForUser, IProvideExpenditureDataRecorder recorderFactory, IProvideExpenditureDataProvider dataProviderFactory)
+        public ExpenditureAppInputViewModel(Action<string, string> messageForUser, Func<string, string, bool> decisionForUser, IProvideExpenditureDataRecorder recorderFactory, IProvideExpenditureDataProvider dataProviderFactory)
         {
             recorder = recorderFactory.GetExpenditureDataRecorder();
             dataProvider = dataProviderFactory.GetExpenditureDataProvider();
