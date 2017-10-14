@@ -94,35 +94,35 @@ namespace XmlClasses
         //    return entries;
         //}
 
-        //internal static List<IExpenditureEntry> ExtractAllExpendituresFromXml(string xmlFilePath)
-        //{
-        //    List<IExpenditureEntry> entries = new List<IExpenditureEntry>();
-        //    XmlDocument doc = new XmlDocument();
-        //    doc.Load(xmlFilePath);
-        //    foreach (XmlNode node in doc.ChildNodes)
-        //    {
-        //        if (node.Name == "Expenditures")
-        //        {
-        //            foreach (XmlNode IExpenditureEntry in node.ChildNodes)
-        //            {
-        //                if (IExpenditureEntry.Name != "LatestID")
-        //                {
-        //                    switch (IExpenditureEntry.Attributes[0].Value) // For  version compatibility
-        //                    {
-        //                        case "1":
-        //                            IExpenditureEntry entry = ReadData(IExpenditureEntry);
-        //                            entries.Add(entry);
-        //                            break;
-        //                        default:
-        //                            break;
-        //                    }
-        //                }
+        internal List<IExpenditureEntry> ExtractAllExpendituresFromXml()
+        {
+            List<IExpenditureEntry> entries = new List<IExpenditureEntry>();
+            XmlDocument doc = new XmlDocument();
+            doc.Load(xmlFilePath);
+            foreach (XmlNode node in doc.ChildNodes)
+            {
+                if (node.Name == "Expenditures")
+                {
+                    foreach (XmlNode IExpenditureEntry in node.ChildNodes)
+                    {
+                        if (IExpenditureEntry.Name != "LatestID")
+                        {
+                            switch (IExpenditureEntry.Attributes[0].Value) // For  version compatibility
+                            {
+                                case "1":
+                                    IExpenditureEntry entry = ReadData(IExpenditureEntry);
+                                    entries.Add(entry);
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
 
-        //            }
-        //        }
-        //    }
-        //    return entries;
-        //}
+                    }
+                }
+            }
+            return entries;
+        }
 
         private static ExpenditureEntry ReadData(XmlNode IExpenditureEntry)
         {
@@ -190,7 +190,6 @@ namespace XmlClasses
             }
             return new ExpenditureEntry(xmlID, budgetItem, dominantTag, associatedTags, people, expenditure, expenditureDate);
         }
-
 
         private List<string> ExtractTagsIntoList(int extractionType)
         {
@@ -261,6 +260,11 @@ namespace XmlClasses
                 }
             }
             return ID;
+        }
+
+        public IEnumerable<IExpenditureEntry> GetAllEntries()
+        {
+            return ExtractAllExpendituresFromXml();
         }
 
         public IEnumerable<string> GetDominantTags()
