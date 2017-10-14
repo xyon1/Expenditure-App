@@ -19,16 +19,19 @@
         </Grid.RowDefinitions>
         <dvc:Chart Grid.Row="1">
             <dvc:Chart.Series>
-                <dvc:PieSeries Title="Expenditure"
+                <dvc:PieSeries Name="totalPieChart"
+                               Title="Expenditure"
                                ItemsSource="{Binding Path=TotalPieData}"
                                IndependentValueBinding="{Binding Path=Key}"
                                DependentValueBinding="{Binding Path=Value}">
                 </dvc:PieSeries>
+                
             </dvc:Chart.Series>
         </dvc:Chart>
         <dvc:Chart Grid.Row="1" Grid.Column="1">
             <dvc:Chart.Series>
-                <dvc:PieSeries Title="Expenditure"
+                <dvc:PieSeries Name="miscPieChart"
+                               Title="Expenditure"
                                ItemsSource="{Binding Path=MiscPieData}"
                                IndependentValueBinding="{Binding Path=Key}"
                                DependentValueBinding="{Binding Path=Value}">
