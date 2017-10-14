@@ -28,6 +28,8 @@ namespace ExpenditureAppWPF
     public partial class ExpenditureApp : Window
     {
         private ExpenditureAppViewModels.ExpenditureAppInputViewModel inputViewModel;
+        private ExpenditureDataRecorderFactory dataRecorderFactory;
+        private ExpenditureDataProviderFactory dataProviderFactory;
         public ExpenditureApp()
         {
             InitializeComponent();
@@ -35,8 +37,8 @@ namespace ExpenditureAppWPF
             Action<string, string> messageForUser = ((message, caption) => System.Windows.MessageBox.Show(message, caption));
             Func<string, string, bool> decisionForUser = (message, caption) => System.Windows.MessageBox.Show(message, caption, MessageBoxButton.YesNo) == MessageBoxResult.Yes;
             Func<string> selectFileLocation = () => SelectFileLocation();
-            var dataRecorderFactory = new ExpenditureDataRecorderFactory(selectFileLocation, messageForUser);
-            var dataProviderFactory = new ExpenditureDataProviderFactory(selectFileLocation, messageForUser);
+            dataRecorderFactory = new ExpenditureDataRecorderFactory(selectFileLocation, messageForUser);
+            dataProviderFactory = new ExpenditureDataProviderFactory(selectFileLocation, messageForUser);
             inputViewModel = new ExpenditureAppViewModels.ExpenditureAppInputViewModel(messageForUser, decisionForUser, dataRecorderFactory, dataProviderFactory);
             inputViewModel = new ExpenditureAppViewModels.ExpenditureAppInputViewModel(messageForUser, decisionForUser, dataRecorderFactory, dataProviderFactory);
             inputUserControl.DataContext = inputViewModel;
@@ -52,7 +54,7 @@ namespace ExpenditureAppWPF
         private void OnOutputModeChanged()
         {
             outputControl.Content = null;
-            outputControl.Content = new OutputUserControlPie();
+            outputControl.Content = new OutputUserControlPie(dataProviderFactory);
         }
 
         private void SetupInputUserControlDelegates()
