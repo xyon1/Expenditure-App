@@ -94,23 +94,23 @@ namespace ExpenditureAppViewModels
 
             foreach (var expenditure in intialTotalData)
             {
-                totalData.Add(expenditure.Key + " - " + expenditure.Value.ToString(), expenditure.Value);
+                totalData.Add(expenditure.Key + " - £" + expenditure.Value.ToString(), expenditure.Value);
 
                 if (expenditure.Value < sum / 20)
                 {
                     miscellaneousSum += expenditure.Value;
-                    if (!miscData.ContainsKey(expenditure.Key + " - " + expenditure.Value.ToString()))
+                    if (!miscData.ContainsKey(expenditure.Key + " - £" + expenditure.Value.ToString()))
                     {
-                        miscData.Add(expenditure.Key + " - " + expenditure.Value.ToString(), expenditure.Value);
+                        miscData.Add(expenditure.Key + " - £" + expenditure.Value.ToString(), expenditure.Value);
                     }
                     else
                     {
-                        miscData[expenditure.Key + " - " + expenditure.Value.ToString()] += expenditure.Value;
+                        miscData[expenditure.Key + " - £" + expenditure.Value.ToString()] += expenditure.Value;
                     }
                 }
             }
 
-            totalData.Add("Miscellaneous - " + miscellaneousSum.ToString(), miscellaneousSum);
+            totalData.Add("Miscellaneous - £" + miscellaneousSum.ToString(), miscellaneousSum);
         }
     }
 }
