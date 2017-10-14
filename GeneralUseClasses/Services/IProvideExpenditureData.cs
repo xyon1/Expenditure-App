@@ -9,7 +9,9 @@ namespace GeneralUseClasses.Services
 {
     public interface IProvideExpenditureData
     {
-         IEnumerable<string> GetDominantTags();
+        IEnumerable<IExpenditureEntry> GetAllEntries();
+
+        IEnumerable<string> GetDominantTags();
 
         IEnumerable<string> GetAssociatedTags();
 
