@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ExpenditureAppViewModels;
+using GeneralUseClasses.Contracts;
 
 namespace ExpenditureAppWPF
 {
@@ -22,11 +23,21 @@ namespace ExpenditureAppWPF
     public partial class OutputUserControlPie : UserControl
     {
         ExpenditureAppOutputPieViewModel viewModel;
-        public OutputUserControlPie()
+        IProvideExpenditureDataProvider provider;
+        public OutputUserControlPie(IProvideExpenditureDataProvider provider)
         {
             InitializeComponent();
+            this.provider = provider;
             viewModel = new ExpenditureAppOutputPieViewModel();
             DataContext = viewModel;
+
+            generatePieChartBtn.Click += (s, e) => OnGeneratePieChartClicked();
+        }
+
+        public void OnGeneratePieChartClicked()
+        {
+            var pieChart = new PieChart(provider);
+            pieChart.Show();
         }
     }
 }

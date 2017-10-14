@@ -21,7 +21,7 @@
             <ComboBox Grid.Column="0" Grid.Row="0" Margin="5,5,5,5" MinWidth="200" Name="dateModeSelectionCombo"
                       ItemsSource="{Binding Path=DateOptions}"
                       SelectedItem="{Binding Path=DateOption}"></ComboBox>
-            <Button MinWidth="40" Margin="5,5,0,5">GeneratePieChart</Button>
+            <Button MinWidth="40" Margin="5,5,0,5" Name="generatePieChartBtn">GeneratePieChart</Button>
         </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
             <StackPanel Margin="0,0,5,0">
