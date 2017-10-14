@@ -265,17 +265,23 @@ namespace XmlClasses
 
         public IEnumerable<string> GetDominantTags()
         {
-            return ExtractTagsIntoList(0);
+            var toReturn = ExtractTagsIntoList(0);
+            toReturn.Sort();
+            return toReturn;
         }
 
         public IEnumerable<string> GetAssociatedTags()
         {
-            return ExtractTagsIntoList(1);
+            var toReturn = ExtractTagsIntoList(1);
+            toReturn.Sort();
+            return toReturn;
         }
 
         public IEnumerable<string> GetPeople()
         {
-            return ExtractTagsIntoList(2);
+            var toReturn = ExtractTagsIntoList(2);
+            toReturn.Sort();
+            return toReturn;
         }
 
         //internal static List<IExpenditureEntry> GetLastFiveEntries(string xmlFilePath)
