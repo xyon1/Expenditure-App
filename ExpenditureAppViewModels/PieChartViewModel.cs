@@ -10,8 +10,8 @@ namespace ExpenditureAppViewModels
 {
     public class PieChartViewModel : ViewModel
     {
-        Dictionary<string, double> totalPieData = new Dictionary<string, double>();
-        Dictionary<string, double> miscPieData = new Dictionary<string, double>();
+        Dictionary<string, double> totalData = new Dictionary<string, double>();
+        Dictionary<string, double> miscData = new Dictionary<string, double>();
         IProvideExpenditureData dataProvider;
         double sum = 0;
         double miscellaneousSum = 0;
@@ -20,20 +20,20 @@ namespace ExpenditureAppViewModels
         {
             dataProvider = provider.GetExpenditureDataProvider();
             PopulatePieData();
-            totalPieData = totalPieData.OrderByDescending((s) => s.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
+            totalData = totalData.OrderByDescending((s) => s.Value).ToDictionary(pair => pair.Key, pair => pair.Value);
         }
 
         public Dictionary<string, double> TotalPieData
         {
             get
             {
-                return totalPieData;
+                return totalData;
             }
             set
             {
-                if (totalPieData != value)
+                if (totalData != value)
                 {
-                    totalPieData = value;
+                    totalData = value;
                     RaisePropertyChanged("TotalPieData");
                 }
             }
@@ -43,15 +43,31 @@ namespace ExpenditureAppViewModels
         {
             get
             {
-                return miscPieData;
+                return miscData;
             }
             set
             {
-                if (miscPieData != value)
+                if (miscData != value)
                 {
-                    miscPieData = value;
+                    miscData = value;
                     RaisePropertyChanged("MiscPieData");
                 }
+            }
+        }
+
+        public string TotalSum
+        {
+            get
+            {
+                return "Total Expenditure was £" + string.Format("{0:0.00}", sum);
+            }
+        }
+
+        public string MiscSum
+        {
+            get
+            {
+                return "Miscellaneous Expenditure was £" + string.Format("{0:0.00}", miscellaneousSum);
             }
         }
 
@@ -63,38 +79,38 @@ namespace ExpenditureAppViewModels
                 sum += entry.expenditure;
             }
 
-            Dictionary<string, double> intialTotalPieData = new Dictionary<string, double>();
+            Dictionary<string, double> intialTotalData = new Dictionary<string, double>();
             foreach (var entry in entries)
             {
-                if (!intialTotalPieData.ContainsKey(entry.dominantTag))
+                if (!intialTotalData.ContainsKey(entry.dominantTag))
                 {
-                    intialTotalPieData.Add(entry.dominantTag, entry.expenditure);
+                    intialTotalData.Add(entry.dominantTag, entry.expenditure);
                 }
                 else
                 {
-                    intialTotalPieData[entry.dominantTag] += entry.expenditure;
+                    intialTotalData[entry.dominantTag] += entry.expenditure;
                 }
             }
 
-            foreach (var expenditure in intialTotalPieData)
+            foreach (var expenditure in intialTotalData)
             {
-                totalPieData.Add(expenditure.Key + " - " + expenditure.Value.ToString(), expenditure.Value);
+                totalData.Add(expenditure.Key + " - " + expenditure.Value.ToString(), expenditure.Value);
 
                 if (expenditure.Value < sum / 20)
                 {
                     miscellaneousSum += expenditure.Value;
-                    if (!miscPieData.ContainsKey(expenditure.Key + " - " + expenditure.Value.ToString()))
+                    if (!miscData.ContainsKey(expenditure.Key + " - " + expenditure.Value.ToString()))
                     {
-                        miscPieData.Add(expenditure.Key + " - " + expenditure.Value.ToString(), expenditure.Value);
+                        miscData.Add(expenditure.Key + " - " + expenditure.Value.ToString(), expenditure.Value);
                     }
                     else
                     {
-                        miscPieData[expenditure.Key + " - " + expenditure.Value.ToString()] += expenditure.Value;
+                        miscData[expenditure.Key + " - " + expenditure.Value.ToString()] += expenditure.Value;
                     }
                 }
             }
 
-            totalPieData.Add("Miscellaneous", miscellaneousSum);
+            totalData.Add("Miscellaneous", miscellaneousSum);
         }
     }
 }
