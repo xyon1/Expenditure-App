@@ -110,7 +110,7 @@ namespace ExpenditureAppViewModels
                 }
             }
 
-            totalData.Add("Miscellaneous", miscellaneousSum);
+            totalData.Add("Miscellaneous - " + miscellaneousSum.ToString(), miscellaneousSum);
         }
     }
 }
