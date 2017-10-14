@@ -17,6 +17,8 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
+        <TextBlock Text="{Binding Path=TotalSum}" HorizontalAlignment="Center"></TextBlock>
+        <TextBlock Grid.Column="1" Text="{Binding Path=MiscSum}" HorizontalAlignment="Center"></TextBlock>
         <dvc:Chart Grid.Row="1">
             <dvc:Chart.Series>
                 <dvc:PieSeries Name="totalPieChart"
