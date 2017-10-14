@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.ComponentModel;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 using GeneralUseClasses.Services;
@@ -13,9 +12,8 @@ using GeneralUseClasses;
 
 namespace ExpenditureAppViewModels
 {
-    public class ExpenditureAppOutputPieViewModel : INotifyPropertyChanged
+    public class ExpenditureAppOutputPieViewModel : ViewModel
     {
-        public event PropertyChangedEventHandler PropertyChanged;
         private ObservableCollection<string> dateOptions = new ObservableCollection<string>() { "Current Week", "Current Month", "Current Year" };
         private string dateOption;
         private string startDay;
@@ -143,14 +141,6 @@ namespace ExpenditureAppViewModels
                     endYear = value;
                     RaisePropertyChanged("EndYear");
                 }
-            }
-        }
-
-        private void RaisePropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
 

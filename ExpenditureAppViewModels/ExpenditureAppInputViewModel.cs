@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.ComponentModel;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 using GeneralUseClasses.Services;
@@ -13,11 +12,10 @@ using GeneralUseClasses;
 
 namespace ExpenditureAppViewModels
 {
-    public class ExpenditureAppInputViewModel : INotifyPropertyChanged
+    public class ExpenditureAppInputViewModel : ViewModel
     {
         IRecordExpenditureData recorder;
         IProvideExpenditureData dataProvider;
-        public event PropertyChangedEventHandler PropertyChanged;
         public Action<string, string> messageForUser;
         public Func<string, string, bool> decisionForUser;
         public Func<string, string, string> requestForTagFromUser;
@@ -359,14 +357,6 @@ namespace ExpenditureAppViewModels
         {
             get { return new RelayCommand(new Action(ResetProperties)); }
         } 
-
-        private void RaisePropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
 
         private void OnRecordExpenditure()
         {
