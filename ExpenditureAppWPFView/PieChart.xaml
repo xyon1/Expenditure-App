@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExpenditureAppWPF"
+        xmlns:dv="clr-namespace:System.Windows.Controls.DataVisualization;assembly=System.Windows.Controls.DataVisualization.Toolkit"
+        xmlns:dvc="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"
         mc:Ignorable="d"
-        Title="Pie Chart of Expenditure" Height="300" Width="300">
+        Title="Pie Chart of Expenditure" Height="300" Width="600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -15,5 +17,14 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
+        <dvc:Chart Grid.Row="1">
+            <dvc:Chart.Series>
+                <dvc:PieSeries Title="Expenditure"
+                               ItemsSource="{Binding Path=PieData}"
+                               IndependentValueBinding="{Binding Path=Key}"
+                               DependentValueBinding="{Binding Path=Value}">
+                </dvc:PieSeries>
+            </dvc:Chart.Series>
+        </dvc:Chart>
     </Grid>
 </Window>

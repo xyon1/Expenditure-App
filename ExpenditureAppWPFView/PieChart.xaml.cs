@@ -11,7 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-//using System.Windows.Forms.DataVisualization.Charting;
+using System.Windows.Controls.DataVisualization;
+using ExpenditureAppViewModels;
+using GeneralUseClasses.Contracts;
 
 namespace ExpenditureAppWPF
 {
@@ -20,22 +22,10 @@ namespace ExpenditureAppWPF
     /// </summary>
     public partial class PieChart : Window
     {
-        public PieChart()
+        public PieChart(IProvideExpenditureDataProvider provider)
         {
             InitializeComponent();
-            //SetupChart()
+            DataContext = new PieChartViewModel(provider);
         }
-
-        //private void SetupChart(Chart chart)
-        //{
-        //    Series expenditureSeries = new Series("Expenditure");
-
-        //    expenditureSeries.ChartType = SeriesChartType.Pie;
-        //    expenditureSeries.ChartArea = "pieChart";
-        //    expenditureSeries.Legend = "Legend1";
-        //    chart.Series.Add(expenditureSeries);
-        //    chart.Series["Expenditure"].Label = "#VALX #VALY";
-        //    chart.Series["Expenditure"].SetCustomProperty("PieStartAngle", "270");
-        //}
     }
 }
