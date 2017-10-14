@@ -63,30 +63,33 @@ namespace ExpenditureAppViewModels
                 sum += entry.expenditure;
             }
 
+            Dictionary<string, double> intialTotalPieData = new Dictionary<string, double>();
             foreach (var entry in entries)
             {
-                if (!totalPieData.ContainsKey(entry.dominantTag))
+                if (!intialTotalPieData.ContainsKey(entry.dominantTag))
                 {
-                    totalPieData.Add(entry.dominantTag, entry.expenditure);
+                    intialTotalPieData.Add(entry.dominantTag, entry.expenditure);
                 }
                 else
                 {
-                    totalPieData[entry.dominantTag] += entry.expenditure;
+                    intialTotalPieData[entry.dominantTag] += entry.expenditure;
                 }
             }
 
-            foreach (var expenditure in totalPieData)
+            foreach (var expenditure in intialTotalPieData)
             {
+                totalPieData.Add(expenditure.Key + " - " + expenditure.Value.ToString(), expenditure.Value);
+
                 if (expenditure.Value < sum / 20)
                 {
                     miscellaneousSum += expenditure.Value;
-                    if (!miscPieData.ContainsKey(expenditure.Key))
+                    if (!miscPieData.ContainsKey(expenditure.Key + " - " + expenditure.Value.ToString()))
                     {
-                        miscPieData.Add(expenditure.Key, expenditure.Value);
+                        miscPieData.Add(expenditure.Key + " - " + expenditure.Value.ToString(), expenditure.Value);
                     }
                     else
                     {
-                        miscPieData[expenditure.Key] += expenditure.Value;
+                        miscPieData[expenditure.Key + " - " + expenditure.Value.ToString()] += expenditure.Value;
                     }
                 }
             }
